@@ -1,5 +1,5 @@
 # personal-contacts-manager
-This Web Client is going to allow the user to login or create a new account, search for contacts, update contacts, add new contacts, and remove contacts.
+This Web Client is going to allow the user to login or create a new account, search for contacts, update contacts, add new contacts, and remove contacts. This could be our master branch.
 
 ### Login Page
 ![](login-page.png)
