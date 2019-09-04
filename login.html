@@ -4,51 +4,42 @@
 <!DOCTYPE html>
 <html>
 	<!-- Page Title: Displayd on browser tab -->
+	<!-- Also included a skeleton stylesheet -->
 	<head>
-		<title>Welcome! | Contact Manager</title>
+		<title>Contacts Manager</title>
+		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 	</head>
 
 	<body>
 		<!-- Main Login Header-->
 		<header>
-			<h1>Welcome to our Contact Manager Website!</h1>
+			<h1>Contacts Manager</h1>
 		</header>
 
 		<!-- Login Form -->
-		<div>
+		<main>
 			<h4>Login</h4>
-			<form id = "login">
-				<label id = "username">Username</label>
+			<form class = "login">
+				<label id = "username" name = "username">Username</label>
 				<input type = "text" id = "username" name = "username" required>
 
-				<br>
-
-				<label id = "user-pw" name = "user-pw">Password</label>
-				<input type = "text" required>
+				<label id = "password" name = "password">Password</label>
+				<input type = "text" id = "password" name = "password" required>
 
 				<br>
 
-				<input type = "submit" value = "login">
+				<button class = "login-button">Login</button>
 			</form>
-		</div>
 
-		<br>
-
-		<!-- Create New Account Form -->
-		<div>
 			<h4>Create New Account</h4>
-			<form>
+			<form class = "new-account">
 				<!-- User enters new username -->
 				<label id = "new-username">Username</label>
 				<input type = "text" id = "new-username" name = "new-username" required>
 
-				<br>
-
 				<!-- User enters new password -->
 				<label id = "new-password">Password</label>
 				<input type = "text" id = "new-password" name = "new-password" required>
-
-				<br>
 
 				<!-- Want user to re-enter password to make sure it's the same -->
 				<label id = "same-password">Re-enter Password</label>
@@ -57,8 +48,11 @@
 				<br>
 
 				<!-- When user is ready to create his/her new account -->
-				<input type = "submit" value = "create account">
+				<button class = "create-account-button">Create Account</button>
 			</form>
-		</div>
+
+			<!-- Including the client side server (javascript file) -->
+			<script src = ""></script>
+		</main>
 	</body>
 </html>

@@ -7,16 +7,17 @@
 	<!-- Page Title: Will display user's userid -->
 	<head>
 		<meta charset= "utf-8">
-		<title>Main Menu | USERID</title>
+		<title>Main Menu</title>
+		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 	</head>
 
 	<body>
 		<header>
 			<h1>Main Menu</h1>
 
-			<form>
+			<form class = "search">
 				<!-- Search for contact -->
-				<input type = "submit" name = "search" value = "Search">
+				<button class = "search-button">Search</button>
 
 				<!-- Datalist with Sample contacts to search -->
 				<input type = "text" list = "contacts" id = "contact" name = "contact" required>
@@ -27,14 +28,13 @@
 			</form>
 		</header>
 
-		<br>
-		<br>
-
 		<!-- List out all options for the user. Add, Edit, and Delete -->
 		<nav>
-			<input type = "button" value = "Add New Contact" onclick = "location.href = 'add-new-contact.html'"/>
-			<input type = "button" value = "Edit Existing Contact" onclick = "location.href = 'edit-contact.html'"/>
-			<input type = "button" value = "Remove Contact" onclick = "location.href = 'remove-contact.html'"/>
+			<button class = "add-new-contact-button" onclick = "location.href = 'add-new-contact.html'">Add New Contact</button>
+			<button class = "edit-contact-button" onclick = "location.href = 'edit-contact.html'">Edit Existing Contact</button>
+			<button class = "remove-contact-button" onclick = "location.href = 'remove-contact.html'">Remove Contact</button>
 		</nav>
+
+		<script src = ""></script>
 	</body>
 </html>

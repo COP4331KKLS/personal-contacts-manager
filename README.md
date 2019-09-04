@@ -25,6 +25,3 @@ A form that allows a user to make changes to a current contact.
 ![](remove-contact.png)
 
 This page is still a work in progress, but it should display list of all the contacts the user has. This information on this list will be from the database server.
-
-
-NOTE: These webpages are still a work in progress and are not final.
