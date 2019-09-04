@@ -1,0 +1,40 @@
+<!-- COP4331 Small Project-->
+<!-- Kevin Rabinowitz, Lloyd Dapaah, Kyle Ritz, and Stefan Werleman -->
+
+<!-- This page will display all options the user can use -->
+<!DOCTYPE html>
+<html lang= "en" dir= "ltr">
+	<!-- Page Title: Will display user's userid -->
+	<head>
+		<meta charset= "utf-8">
+		<title>Main Menu | USERID</title>
+	</head>
+
+	<body>
+		<header>
+			<h1>Main Menu</h1>
+
+			<form>
+				<!-- Search for contact -->
+				<input type = "submit" name = "search" value = "Search">
+
+				<!-- Datalist with Sample contacts to search -->
+				<input type = "text" list = "contacts" id = "contact" name = "contact" required>
+				<datalist id = "contacts">
+					<option value = "Contact">
+					<option value = "Other">
+				</datalist>
+			</form>
+		</header>
+
+		<br>
+		<br>
+
+		<!-- List out all options for the user. Add, Edit, and Delete -->
+		<nav>
+			<input type = "button" value = "Add New Contact" onclick = "location.href = 'add-new-contact.html'"/>
+			<input type = "button" value = "Edit Existing Contact" onclick = "location.href = 'edit-contact.html'"/>
+			<input type = "button" value = "Remove Contact" onclick = "location.href = 'remove-contact.html'"/>
+		</nav>
+	</body>
+</html>

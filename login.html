@@ -1,0 +1,64 @@
+<!-- COP4331 Small Project-->
+<!-- Kevin Rabinowitz, Lloyd Dapaah, Kyle Ritz, and Stefan Werleman -->
+
+<!DOCTYPE html>
+<html>
+	<!-- Page Title: Displayd on browser tab -->
+	<head>
+		<title>Welcome! | Contact Manager</title>
+	</head>
+
+	<body>
+		<!-- Main Login Header-->
+		<header>
+			<h1>Welcome to our Contact Manager Website!</h1>
+		</header>
+
+		<!-- Login Form -->
+		<div>
+			<h4>Login</h4>
+			<form id = "login">
+				<label id = "username">Username</label>
+				<input type = "text" id = "username" name = "username" required>
+
+				<br>
+
+				<label id = "user-pw" name = "user-pw">Password</label>
+				<input type = "text" required>
+
+				<br>
+
+				<input type = "submit" value = "login">
+			</form>
+		</div>
+
+		<br>
+
+		<!-- Create New Account Form -->
+		<div>
+			<h4>Create New Account</h4>
+			<form>
+				<!-- User enters new username -->
+				<label id = "new-username">Username</label>
+				<input type = "text" id = "new-username" name = "new-username" required>
+
+				<br>
+
+				<!-- User enters new password -->
+				<label id = "new-password">Password</label>
+				<input type = "text" id = "new-password" name = "new-password" required>
+
+				<br>
+
+				<!-- Want user to re-enter password to make sure it's the same -->
+				<label id = "same-password">Re-enter Password</label>
+				<input type = "text" id = "same-password" name = "same-password" required>
+
+				<br>
+
+				<!-- When user is ready to create his/her new account -->
+				<input type = "submit" value = "create account">
+			</form>
+		</div>
+	</body>
+</html>
