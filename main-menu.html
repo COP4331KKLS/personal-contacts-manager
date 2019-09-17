@@ -7,13 +7,13 @@
 	<!-- Page Title: Will display user's userid -->
 	<head>
 		<meta charset= "utf-8">
-		<title>Main Menu</title>
+		<title>Main Menu | NAME</title>
 		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 	</head>
 
 	<body>
 		<header>
-			<h1>Main Menu</h1>
+			<h1>Welcome *NAME GOES HERE*</h1>
 
 			<form class = "search">
 				<!-- Search for contact and load to other page-->
@@ -24,6 +24,7 @@
 				<datalist id = "contacts">
 					<option value = "Contact">
 					<option value = "Other">
+					<option value = "Kevin">
 				</datalist>
 			</form>
 		</header>
@@ -31,10 +32,23 @@
 		<!-- List out all options for the user. Add, Edit, and Delete -->
 		<nav>
 			<button class = "add-new-contact-button" onclick = "location.href = 'add-new-contact.html'">Add New Contact</button>
-			<button class = "edit-contact-button" onclick = "location.href = 'edit-contact.html'">Edit Existing Contact</button>
+			<!-- <button class = "edit-contact-button" onclick = "location.href = 'edit-contact.html'">Edit Existing Contact</button> -->
 			<button class = "remove-contact-button" onclick = "location.href = 'remove-contact.html'">Remove Contact</button>
 		</nav>
 
-		<script src = ""></script>
+		<div class = "searched-contact">
+			<h4>NAME OF CONTACT</h4>
+
+			<p>This should display all of the contacts information</p>
+
+			<button class = "edit-contact" onclick = "location.href = 'edit-contact.html'">Edit</button>
+			<button class = "remove-current-contact" onclick = "location.href = 'remove-contact.html'">Remove</button>
+		</div>
+
+		<script src = "client.js"></script>
+
+		<script>
+			searchContactPage();
+		</script>
 	</body>
 </html>

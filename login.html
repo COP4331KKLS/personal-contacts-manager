@@ -18,21 +18,23 @@
 
 		<!-- Login Form -->
 		<main>
-			<h4>Login</h4>
 			<form class = "login">
+				<h4>Login</h4>
+
 				<label id = "username" name = "username">Username</label>
-				<input type = "text" id = "username" name = "username" required pattern="[a-zA-Z0-9_-]{5,15}>
+				<input type = "text" id = "username" name = "username" pattern = "[a-zA-Z0-9_-]{5,15}?" required>
 
 				<label id = "password" name = "password">Password</label>
-				<input type = "text" id = "password" name = "password" required pattern="[a-zA-Z0-9_-!@#$%^&*()]{8,16}>
+				<input type = "text" id = "password" name = "password" pattern = "[a-zA-Z0-9_-!@#$%^&*()]{8,16}?" required>
 
 				<br>
 
 				<button class = "login-button">Login</button>
 			</form>
 
-			<h4>Create New Account</h4>
 			<form class = "new-account">
+				<h4>Create New Account</h4>
+
 				<!-- User enters new username -->
 				<label id = "new-username">Username</label>
 				<input type = "text" id = "new-username" name = "new-username" required>
@@ -51,8 +53,17 @@
 				<button class = "create-account-button">Create Account</button>
 			</form>
 
+			<div class = "loading">
+				<img src = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt = "Loading">
+			</div>
+
 			<!-- Client side javascript -->
 			<script src = "client.js"></script>
+
+			<!-- Call the loginForm function to submit form-->
+			<script>
+					loginPage();
+			</script>
 		</main>
 	</body>
 </html>
