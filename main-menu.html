@@ -17,8 +17,6 @@
 
 			<form class = "search">
 				<!-- Search for contact and load to other page-->
-				<button class = "search-button">Search</button>
-
 				<!-- Datalist with Sample contacts to search -->
 				<input type = "text" list = "contacts" id = "contact" name = "contact" required>
 				<datalist id = "contacts">
@@ -26,6 +24,9 @@
 					<option value = "Other">
 					<option value = "Kevin">
 				</datalist>
+				<nav>
+					<button class = "search-button" onclick = "location.href = 'display-results.html'">Search</button>
+				</nav>
 			</form>
 		</header>
 
