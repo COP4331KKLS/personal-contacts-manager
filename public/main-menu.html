@@ -17,6 +17,8 @@
 
 			<form class = "search">
 				<!-- Search for contact and load to other page-->
+				<button class = "search-button">Search</button>
+
 				<!-- Datalist with Sample contacts to search -->
 				<input type = "text" list = "contacts" id = "contact" name = "contact" required>
 				<datalist id = "contacts">
@@ -24,9 +26,6 @@
 					<option value = "Other">
 					<option value = "Kevin">
 				</datalist>
-				<nav>
-					<button class = "search-button" onclick = "location.href = 'display-results.html'">Search</button>
-				</nav>
 			</form>
 		</header>
 
@@ -46,10 +45,8 @@
 			<button class = "remove-current-contact" onclick = "location.href = 'remove-contact.html'">Remove</button>
 		</div>
 
-		<script src = "client.js"></script>
+		<!-- TODO: Logout button -->
 
-		<script>
-			searchContactPage();
-		</script>
+		<div id = "main-menu"></div>
 	</body>
 </html>
