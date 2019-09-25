@@ -35,11 +35,10 @@
 <body>
 	<p id="showData"></p>
 
-
 	<script>
 	    function CreateTableFromJSON() {
 				event.preventDefault();
-	        var myBooks = [
+/*	        var myBooks = [
 	            {
 	                "First Name": "Kyle",
 	                "Last Name" : "Rits",
@@ -65,18 +64,20 @@
 	              "Address": "3721 Pyrite Drive"
 	            }
 	        ]
+*/
 
+searched = '/search?searchString=' + document.getElementById("contact").value;
+let data = {
+	authorization: "5d8bedba4d8fcb57c4eaf0c2",
+
+};
+					let response = await fetch(searched {
+						method: 'GET',
+						headers: JSON.stringify(data)
+					});
+					let myBooks = await response.JSON();
 	        // EXTRACT VALUE FOR HTML HEADER.
 	        // ('Book ID', 'Book Name', 'Category' and 'Price')
-	        var col = [];
-	        for (var i = 0; i < myBooks.length; i++) {
-	            for (var key in myBooks[i]) {
-	                if (col.indexOf(key) === -1) {
-	                    col.push(key);
-	                }
-	            }
-	        }
-
 	        // CREATE DYNAMIC TABLE.
 	        var table = document.createElement("table");
 
