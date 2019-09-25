@@ -6,6 +6,22 @@
 		<meta charset="utf-8">
 		<title>Remove Contact</title>
 		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+		<style>
+				th, td, p, input {
+						font:14px Verdana;
+				}
+				table, th, td
+				{
+						border: solid 1px #DDD;
+						border-collapse: collapse;
+						padding: 2px 3px;
+						text-align: center;
+				}
+				th {
+						font-weight:bold;
+				}
+		</style>
+
 	</head>
 	<body>
 		<header>
@@ -13,11 +29,88 @@
 		</header>
 
 		<h3>Contacts</h3>
+		<form class = "search-for-removal">
+			<!-- Search for contact and load to other page-->
+			<!-- Datalist with Sample contacts to search -->
+			<input type = "text" list = "contacts" id = "contact-to-remove" name = "contact-to-remove">
+   		<button class = "search-button" onclick = "CreateTableFromJSON()">Search</button>
+		</form>
+<p id="removal-data"></p>
+		<script>
+		    function CreateTableFromJSON() {
+					event.preventDefault();
+		        var myBooks = [
+		            {
+		                "First Name": "Kyle",
+		                "Last Name" : "Rits",
+		                "Company" : "UCF",
+		                "Phone" : "808-990-5604",
+		                "Email": "KyleRits@Knights.ucf.edu",
+		                "Address": "3721 Pyrite Drive"
+		            },
+		            {
+		              "First Name": "Kyle",
+		              "Last Name" : "Rits",
+		              "Company" : "UCF",
+		              "Phone" : "808-990-5604",
+		              "Email": "KyleRits@Knights.ucf.edu",
+		              "Address": "3721 Pyrite Drive"
+		            },
+		            {
+		              "First Name": "Kyle",
+		              "Last Name" : "Rits",
+		              "Company" : "UCF",
+		              "Phone" : "808-990-5604",
+		              "Email": "KyleRits@Knights.ucf.edu",
+		              "Address": "3721 Pyrite Drive"
+		            }
+		        ]
+
+		        // EXTRACT VALUE FOR HTML HEADER.
+		        // ('Book ID', 'Book Name', 'Category' and 'Price')
+		        var col = [];
+		        for (var i = 0; i < myBooks.length; i++) {
+		            for (var key in myBooks[i]) {
+		                if (col.indexOf(key) === -1) {
+		                    col.push(key);
+		                }
+		            }
+		        }
+
+		        // CREATE DYNAMIC TABLE.
+		        var table = document.createElement("table");
+
+		        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+		        var tr = table.insertRow(-1);                   // TABLE ROW.
+
+		        for (var i = 0; i < col.length; i++) {
+		            var th = document.createElement("th");      // TABLE HEADER.
+		            th.innerHTML = col[i];
+		            tr.appendChild(th);
+		        }
+
+		        // ADD JSON DATA TO THE TABLE AS ROWS.
+		        for (var i = 0; i < myBooks.length; i++) {
+
+		            tr = table.insertRow(-1);
+
+		            for (var j = 0; j < col.length; j++) {
+		                var tabCell = tr.insertCell(-1);
+		                tabCell.innerHTML = myBooks[i][col[j]];
+		            }
+		        }
+
+		        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+		        var divContainer = document.getElementById("removal-data");
+		        divContainer.innerHTML = "";
+		        divContainer.appendChild(table);
+		    }
+		</script>
+
 		<!-- table of all the user's contacts -->
-
-
-
-		<button class = "cancel-remove-contact-button" onclick = "location.href = 'main-menu.html'">Cancel</button>
-
 	</body>
+	<footer>
+		<button class = "cancel-remove-contact-button" onclick = "location.href = 'main-menu.html'">Main Menu</button>
+	</footer>
 </html>
