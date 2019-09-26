@@ -4,24 +4,13 @@ import './Home.css';
 
 class Home extends React.Component
 {
-   componentDidMount()
+   componentDidMount() 
    {
-      this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
-      .catch(err => console.log(err));
+
    }
 
    callBackendAPI = async () =>
    {
-      const response = await fetch('http://localhost:5000/status');
-      const body = await response.json();
-
-      if (response.status !== 200)
-      {
-         throw Error(body.message)
-      }
-      console.log(body);
-      return body;
    }
 
    render()
@@ -83,12 +72,27 @@ class Home extends React.Component
          const username = data.get('username');
          const password = data.get('password');
 
-         fetch('/login',
+         fetch('https://personal-contacts-manager.herokuapp.com/login',
          {
                method: 'POST',
-               headers: {'X-Username-Header': username, 'X-Password-Header': password}
-         });
-   }
+               headers: {
+                  'username': username, 
+                  'password': password
+               }
+         })
+         .then(response => response.json())
+         .then(responseData => {
+
+            if(responseData.error !== ""){
+               console.log(`The request had invalid data: ${responseData.error}`);
+               return;
+            }
+
+            const USER_ID = responseData.message;
+            console.log(USER_ID);
+         })
+         .catch(error => console.log(`there was an error ${error}`));
+      }
 }
 
 export default Home;
