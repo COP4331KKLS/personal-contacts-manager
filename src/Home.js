@@ -1,6 +1,5 @@
 import React from 'react';
 import './Home.css';
-//import { Redirect } from 'react-router';
 
 class Home extends React.Component
 {
@@ -47,22 +46,25 @@ class Home extends React.Component
          </main>
       );
    }
+   
+   
 
-//   registerFormHandler(event)
-//   {
-//      event.preventDefault();
-   //   const data = new FormData(event.target);
+  registerFormHandler(event)
+  {
+     		event.preventDefault();
+     		const data = new FormData(event.target);
 
-//      const username = data.get('new-username');
-   //   const password = data.get('new-password');
-//
-      //fetch("http://localhost:5000/register", {
-   //      method: 'POST',
-      //   headers: {'username': username, 'password': password}
-   //   }).then(res => res.json())
-   //   .then(response => console.log('Success', JSON.stringify(response)))
-   //   .catch(error => console.log('Request failed', error));
-   //}
+     		const username = data.get('new-username');
+     		const password = data.get('new-password');
+
+      	fetch("https://personal-contacts-manager.herokuapp.com/register", {
+        	method: 'POST',
+         	headers: {'username': username, 'password': password}
+   	  	}).then(res => res.json())
+   	   	.then(response => console.log('Success', JSON.stringify(response)))
+  	   	.catch(error => console.log('Request failed', error));
+   }
+  
 
    loginFormHandler(event)
    {
@@ -96,3 +98,4 @@ class Home extends React.Component
 }
 
 export default Home;
+
