@@ -1,0 +1,36 @@
+.HomeBackground {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #483D3F;
+}
+
+.Content {
+  height: 94%;
+  width: 100%;
+}
+
+.LogoutContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  float: right;
+  height: 6%;
+  width: 100%;
+}
+
+.LogoutButton {
+  text-align: center;
+  width: 130px;
+  font-size: 20px;
+  border: 1.5px solid black;
+  border-radius: 3px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.LogoutButton:hover {
+  background-color: #A23E48; /* Green */
+  color: white;
+  border-color: #fff;
+}
