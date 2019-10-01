@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './Home.css';
-import CreateContactModal from '../create-contact/CreateContactModal'
+import CreateContactModal from '../create-contact/CreateContactModal';
+import EditContactModal from '../EditContact/EditContactModal'
 
 class Home extends Component
 {
    state = {
-      isOpen: false
+      isCreateContactOpen: false,
+      isEditContactOpen: false
    }
+
    constructor(props)
    {
       super(props)
@@ -53,16 +56,19 @@ class Home extends Component
     return this.state.contacts.map((contact, index) => {
        const {"First Name":First_Name,"Last Name": Last_Name, Company, Phone, Email, Address,"Contact ID":CID } = contact //destructuring
        return (
-          <tr key={CID}>
-             <td>{First_Name}</td>
-             <td>{Last_Name}</td>
-             <td>{Company}</td>
-             <td>{Phone}</td>
-             <td>{Email}</td>
-             <td>{Address}</td>
-             <td><button value={CID} onClick={this.editContact}>Edit</button></td>
-             <td><button value={CID} onClick={this.deleteContact}>Delete</button></td>
-          </tr>
+          <div>
+             <tr key={CID}>
+                <td>{First_Name}</td>
+                <td>{Last_Name}</td>
+                <td>{Company}</td>
+                <td>{Phone}</td>
+                <td>{Email}</td>
+                <td>{Address}</td>
+                <td><button value={CID} onClick={(e) => this.setState({ isEditContactOpen: true })}>Edit</button></td>
+                <td><button value={CID} onClick={this.deleteContact}>Delete</button></td>
+             </tr>
+             <EditContactModal isEditContactOpen = {this.state.isEditContactOpen} onClose = {(e) => this.setState({isEditContactOpen: false})}/>
+          </div>
        )
     })
     // this.setState({doRender: false});
@@ -100,10 +106,11 @@ class Home extends Component
 
                <br></br>
 
-               <button className = "NewContactButton" onClick = {(e) => this.setState({ isOpen: true })}>Add New Contact</button>
-               <CreateContactModal isOpen = {this.state.isOpen} onClose = {(e) => this.setState({isOpen: false})}/>
+               <button className = "NewContactButton" onClick = {(e) => this.setState({ isCreateContactOpen: true })}>Add New Contact</button>
+               <CreateContactModal isCreateContactOpen = {this.state.isCreateContactOpen} onClose = {(e) => this.setState({isCreateContactOpen: false})}/>
 
                <br></br>
+
                <h1 id='title'>React Dynamic Table</h1>
                <table id='students'>
                   <tbody>

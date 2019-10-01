@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import './CreateContactModal.css';
+import './EditContactModal.css';
 import { Card, CardBody } from 'reactstrap';
 
-class CreateContactModal extends Component
+class EditContactModal extends Component
 {
    render()
    {
-      let createContact = (
-         <Card className = "NewContactCard">
+      let editContact = (
+         <Card className = "CurrentContactCard">
             <CardBody>
-               <h4>Create New Contact</h4>
-               <form className = "NewContact">
+               <h4>Edit Contact</h4>
+               <form className = "EditContact">
                   <label id = "first-name">First Name</label>
                   <input type = "text" id = "first-name" name = "first-name"/>
 
@@ -31,24 +31,24 @@ class CreateContactModal extends Component
 
                   <br></br>
 
-                  <button class = "CreateButton">Create</button>
+                  <button class = "EditButton">Edit</button>
                   <button onClick = {this.props.onClose}>Close</button>
                </form>
             </CardBody>
          </Card>
       );
 
-      if (!this.props.isCreateContactOpen)
+      if (!this.props.isEditContactOpen)
       {
-         createContact = null;
+         editContact = null;
       }
 
       return (
          <div>
-            {createContact}
+            {editContact}
          </div>
       );
    }
 }
 
-export default CreateContactModal
+export default EditContactModal;
