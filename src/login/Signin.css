@@ -1,4 +1,4 @@
-.App {
+.Signin {
   text-align: center;
   font-size: 23px;
 }
@@ -33,18 +33,17 @@
 .ButtonContainer {
   margin-top: 10px;
   display: flex;
+  color: white;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
 .CustomButton {
-  font-family: 'Be Vietnam', sans-serif;
   min-width: 40%;
   font-size: 23px;
   padding: 7px 7px;
   box-sizing: border-box;
-  background-color: white;
-  color: black;
+  color: white;
   border: 1px solid black;
   border-radius: 4px;
   -webkit-transition-duration: 0.4s; /* Safari */

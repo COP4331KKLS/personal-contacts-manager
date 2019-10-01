@@ -20,7 +20,7 @@ class Home extends Component
       return (
          <div className='HomeBackground'>
 
-            <div className='LogoutContainer'>
+               <div className='LogoutContainer'>
                <input className='LogoutButton' value='LOGOUT' onClick={() => this.props.logout()}></input>
             </div>
 

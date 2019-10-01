@@ -92,8 +92,8 @@ class Signin extends Component
                <input className='Field' type='text' onChange={event => this.setState({username: event.target.value})}></input>
                <input className='Field' type='password' onChange={event => this.setState({password: event.target.value})}></input>
                <div className='ButtonContainer'>
-                  <input className='CustomButton' type='button' value='LOGIN' onClick={() => this.handleRegisterOrLogin(false)}></input>
-                  <input className='CustomButton' type='button' value='REGISTER' onClick={() => this.handleRegisterOrLogin(true)}></input>
+                  <input className='LoginButton' type='button' value='LOGIN' onClick={() => this.handleRegisterOrLogin(false)}></input>
+                  <input className='RegisterButton' type='button' value='REGISTER' onClick={() => this.handleRegisterOrLogin(true)}></input>
                </div>
                <p className='ErrorMessage'>{this.state.error}</p>
            </div>
