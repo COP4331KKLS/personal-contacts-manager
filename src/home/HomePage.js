@@ -6,43 +6,114 @@ class HomePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      uid: props.uid
+      uid: props.uid,
+      search: ''
     }
 
     this.state = { //state is by default an object
-         students: [
-            { id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com' },
-            { id: 2, name: 'Ali', age: 19, email: 'ali@email.com' },
-            { id: 3, name: 'Saad', age: 16, email: 'saad@email.com' },
-            { id: 4, name: 'Asad', age: 25, email: 'asad@email.com' }
-         ]
+         contacts: [
+                      {
+                          "First Name": "Kyle",
+                          "Last Name" : "Rits",
+                          "Company" : "",
+                          "Phone" : "808-990-5604",
+                          "Email": "KyleRits@Knights.ucf.edu",
+                          "Address": "3721 Pyrite Drive",
+                          "Contact ID": "Blah"
+                      },
+                      {
+                        "First Name": "Kyle",
+                        "Last Name" : "Rits",
+                        "Company" : "UCF",
+                        "Phone" : "808-990-5604",
+                        "Email": "KyleRits@Knights.ucf.edu",
+                        "Address": "",
+                        "Contact ID": "Test"
+                      },
+                      {
+                        "First Name": "Kyle",
+                        "Last Name" : "Rits",
+                        "Company" : "UCF",
+                        "Phone" : "808-990-5604",
+                        "Email": "KyleRits@Knights.ucf.edu",
+                        "Address": "3721 Pyrite Drive",
+                        "Contact ID": "Yeah"
+                      }
+                  ],
+         doRender: false
       }
 
+    }
 
-  }
+    // sendSearch = () =>
+    // {
+    //   let requestUrl = SERVER_URL;
+    //   requestUrl += '/searchContact/?searchstring=';
+    //   requestURL += this.state.searchString;
+    //
+    //   fetch(requestUrl,
+    //     {
+    //       method: 'GET',
+    //       headers: {authorization: this.uid}
+    //     }
+    //   ) .then(response => response.json())
+    //     .then(responseData => {
+    //         if (responseData.error !== "") {
+    //             this.setState({
+    //                 error:responseData.error,
+    //                 uid:''
+    //             })
+    //             return;
+    //         }
+    //         this.setState({uid: responseData.message});
+    //     }).
+    //     catch(error => {
+    //             this.setState({
+    //              error:Internal server error. ${error},
+    //              uid: ''
+    //          });
+    //     });
+    // }
 
-  renderTableData() {
-     return this.state.students.map((student, index) => {
-        const { id, name, age, email } = student //destructuring
+
+    renderTableData() {
+     return this.state.contacts.map((contact, index) => {
+        const {"First Name":First_Name,"Last Name": Last_Name, Company, Phone, Email, Address,"Contact ID":CID } = contact //destructuring
         return (
-           <tr key={id}>
-              <td>{id}</td>
-              <td>{name}</td>
-              <td>{age}</td>
-              <td>{email}</td>
+           <tr key={CID}>
+              <td>{First_Name}</td>
+              <td>{Last_Name}</td>
+              <td>{Company}</td>
+              <td>{Phone}</td>
+              <td>{Email}</td>
+              <td>{Address}</td>
+              <td><button value={CID} onClick={this.editContact}>Edit</button></td>
+              <td><button value={CID} onClick={this.deleteContact}>Delete</button></td>
            </tr>
         )
      })
+     // this.setState({doRender: false});
+
+  }
+
+editContact(el){
+    console.log("Edit Contact");
+    console.log(el.target.value);
+}
+  deleteContact(e){
+    console.log("Delete Contact");
+    console.log(e.target.value);
   }
 
   renderTableHeader() {
-     let header = Object.keys(this.state.students[0])
+     let header = Object.keys(this.state.contacts[0])
+     header[6] = ""
      return header.map((key, index) => {
         return <th key={index}>{key.toUpperCase()}</th>
      })
   }
 
-  CreateTableFromJSON() {
+    CreateTableFromJSON() {
     //event.preventDefault();
 	        var myBooks = [
           {
@@ -129,11 +200,15 @@ class HomePage extends Component {
       }
 
       // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-      var divContainer = document.getElementById("showData");
-      // divContainer.innerHTML = "Fine";
-      divContainer.appendChild(table);
+      // var divContainer = document.getElementById("showData");
+      // divContainer.innerHTML = "";
+      // divContainer.appendChild(table);
+      // getElementById("showData").appendChild(table);
   }
 
+toggleRender() {
+
+}
 
   render() {
     return (
@@ -145,17 +220,39 @@ class HomePage extends Component {
 
 				<input type = "text" list = "contacts" id = "contact" name = "contact"/>
           <div>
-  					<button class = "SearchButton" value='Search' onclick =  {this.CreateTableFromJSON()}>Search</button>
-  					<button class = "add-new-contact-button">Add New Contact</button>
+            <button class = "add-new-contact-button" onClick={() =>  this.setState({
+              contacts: [
+                           {
+                               "First Name": "Kyle",
+                               "Last Name" : "Rits",
+                               "Company" : "",
+                               "Phone" : "808-990-5604",
+                               "Email": "KyleRits@Knights.ucf.edu",
+                               "Address": "3721 Pyrite Drive",
+                               "Contact ID": "Blah"
+                           },
+                           {
+                             "First Name": "2",
+                             "Last Name" : "Rits",
+                             "Company" : "UCF",
+                             "Phone" : "808-990-5604",
+                             "Email": "KyleRits@Knights.ucf.edu",
+                             "Address": "",
+                             "Contact ID": "Test"
+                           }
+                       ]
+              })}>Add New Contact</button>
+            <button class = "SearchButton" value='Search' onClick={() => this.setState({doRender: true})}>Search</button>
+
 				  </div>
 
-      <p id="showData"></p>
+      <table id="showData"></table>
       <div>
    <h1 id='title'>React Dynamic Table</h1>
    <table id='students'>
       <tbody>
-         <tr>{this.renderTableHeader()}</tr>
-         {this.renderTableData()}
+         <tr>{this.state.doRender ? this.renderTableHeader() : null}</tr>
+         {this.state.doRender ? this.renderTableData() : null}
       </tbody>
    </table>
 </div>
