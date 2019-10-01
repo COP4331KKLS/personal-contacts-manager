@@ -25,7 +25,7 @@
   font-size: 20px;
   border: 1.5px solid black;
   border-radius: 3px;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
 
@@ -33,4 +33,26 @@
   background-color: #A23E48; /* Green */
   color: white;
   border-color: #fff;
+}
+
+.Content {
+   margin-top: 5%;
+   margin-left: 35%;
+   flex-direction: row;
+}
+
+.SearchBox {
+   width: 25%;
+}
+
+.SearchButton {
+   margin-right: 0.5%;
+   width: 10%;
+   color: white;
+}
+
+.NewContactButton
+{
+   color: white;
+   width: 35.5%;
 }

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Home from '../Home/Home';
+import Home from '../home/Home';
 import './Signin.css';
 
 const SERVER_URL = "https://personal-contacts-manager.herokuapp.com";
 
 class Signin extends Component
 {
-
    constructor()
    {
       super()
@@ -90,7 +89,7 @@ class Signin extends Component
          <div className="Background">
             <div className='Container'>
                <h1 className='AppTitle'>CONTACTS MANAGER</h1>
-               <input className='Field' type='email' onChange={event => this.setState({username: event.target.value})}></input>
+               <input className='Field' type='text' onChange={event => this.setState({username: event.target.value})}></input>
                <input className='Field' type='password' onChange={event => this.setState({password: event.target.value})}></input>
                <div className='ButtonContainer'>
                   <input className='CustomButton' type='button' value='LOGIN' onClick={() => this.handleRegisterOrLogin(false)}></input>
