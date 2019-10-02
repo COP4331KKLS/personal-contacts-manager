@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import './Home.css';
-import CreateContactModal from '../create-contact/CreateContactModal';
+import CreateContactModal from '../create-contact/CreateContactModal'
 import EditContactModal from '../EditContact/EditContactModal'
-
+// import ReactDOM from "react-dom"
+// import Modal from 'react-modal'
+import Modal from "../EditContactModal/editContactModal";
 class Home extends Component
 {
    state = {
-      isCreateContactOpen: false,
-      isEditContactOpen: false
+     isCreateContactOpen: false,
+     isEditContactOpen: false,
+      isOpen: false
    }
-
    constructor(props)
    {
       super(props)
       this.state = {
          uid: props.uid,
-         search: ''
+         search: '',
+         showEditModal: false,
+         setShowEditModal: false
+
       }
 
       this.state = { //state is by default an object
@@ -56,29 +61,41 @@ class Home extends Component
     return this.state.contacts.map((contact, index) => {
        const {"First Name":First_Name,"Last Name": Last_Name, Company, Phone, Email, Address,"Contact ID":CID } = contact //destructuring
        return (
-          <div>
-             <tr key={CID}>
-                <td>{First_Name}</td>
-                <td>{Last_Name}</td>
-                <td>{Company}</td>
-                <td>{Phone}</td>
-                <td>{Email}</td>
-                <td>{Address}</td>
-                <td><button value={CID} onClick={(e) => this.setState({ isEditContactOpen: true })}>Edit</button></td>
-                <td><button value={CID} onClick={this.deleteContact}>Delete</button></td>
-             </tr>
-             <EditContactModal isEditContactOpen = {this.state.isEditContactOpen} onClose = {(e) => this.setState({isEditContactOpen: false})}/>
-          </div>
+          <tr keyContact={CID}>
+             <td fName={First_Name}>{First_Name}</td>
+             <td>{Last_Name}</td>
+             <td>{Company}</td>
+             <td>{Phone}</td>
+             <td>{Email}</td>
+             <td>{Address}</td>
+             <td><button value={CID}
+             fName={First_Name}
+             lName={Last_Name}
+             company={Company}
+             phone={Phone}
+             email={Email}
+             address={Address}
+             onClick={this.editContact}>Edit</button></td>
+             <td><button value={CID} onClick={this.deleteContact}>Delete</button></td>
+          </tr>
        )
     })
     // this.setState({doRender: false});
 
  }
 
- editContact(el){
-     console.log("Edit Contact");
-     console.log(el.target.value);
+
+ editContact = (el) =>{
+   const First_Name = el.target.getAttribute('fName');
+   console.log(First_Name);
+   console.log("Edit Contact");
+   // document.getElementById("EditContactss").getElementById("first-name-input");
+   // this.editContact.getElementById("first-name-input").value = First_Name;
+   console.log(el.target.value);
+   this.setState({showContactOpen: true});
  }
+
+
    deleteContact(e){
      console.log("Delete Contact");
      console.log(e.target.value);
@@ -91,12 +108,29 @@ class Home extends Component
          return <th key={index}>{key.toUpperCase()}</th>
       })
    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    render()
    {
+
       return (
          <div className='HomeBackground'>
-
-               <div className='LogoutContainer'>
+            <div className='LogoutContainer'>
                <input className='LogoutButton' value='LOGOUT' onClick={() => this.props.logout()}></input>
             </div>
 
@@ -108,9 +142,8 @@ class Home extends Component
 
                <button className = "NewContactButton" onClick = {(e) => this.setState({ isCreateContactOpen: true })}>Add New Contact</button>
                <CreateContactModal isCreateContactOpen = {this.state.isCreateContactOpen} onClose = {(e) => this.setState({isCreateContactOpen: false})}/>
-
+               <EditContactModal id="EditContactss" isEditContactOpen = {this.state.showContactOpen} onClose = {(e) => this.setState({showContactOpen: false})}/>
                <br></br>
-
                <h1 id='title'>React Dynamic Table</h1>
                <table id='students'>
                   <tbody>
