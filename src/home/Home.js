@@ -157,10 +157,34 @@ class Home extends Component
  }
 
 submitEditContact= (e) =>{
-  alert(`${this.state.editPreFillFirstName}`)
+  // alert(`${this.state.editPreFillFirstName}`);
+  var indexEdit = -1;
+  var newArray = this.state.contacts.slice();
   //Send JSON of form for update
+  for(var i=0; i<newArray.length; i++)
+  {
+    if(newArray[i].CID===e.target.value)
+    {
+      indexEdit = i;
+    }
+  }
+
   console.log("SUBMIT EDIT CONTACT");
   console.log(this.state.editPreFillFirstName);
+  alert("Test");
+  alert(`${newArray[indexEdit].Phone}`);
+
+  newArray[indexEdit] = {
+    "First Name": this.state.editPreFillFirstName,
+    "Last Name" : this.state.editPreFillLastName,
+    "Company" : this.state.editPreFillCompany,
+    "Phone" : this.state.editPreFillPhone,
+    "Email": this.state.editPreFillEmail,
+    "Address": this.state.editPreFillAddress,
+    "CID": e.target.value
+  };
+  this.setState({contacts : newArray});
+  alert(`${newArray[indexEdit].Phone}`);
   console.log(this.state.editPreFillLastName);
   console.log(this.editCompany);
   console.log(this.editPhone);

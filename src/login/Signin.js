@@ -88,7 +88,7 @@ class Signin extends Component
       const logInPage = (
          <div className="Background">
             <div className='Container'>
-               <h1 className='AppTitle'>CONTACTS MANAGER</h1>
+               <h1 className='AppTitle'>HELLO THERE <br></br>(GENERAL KENOBI)</h1>
                <input className='Field' type='text' onChange={event => this.setState({username: event.target.value})}></input>
                <input className='Field' type='password' onChange={event => this.setState({password: event.target.value})}></input>
                <div className='ButtonContainer'>
