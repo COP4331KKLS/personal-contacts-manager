@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
-import Home from '../home/Home';
+import Home from '../Home/Home';
+import Particles from 'react-particles-js';
 import './Signin.css';
+document.body.style = 'background: #483D3F;';
 
 const SERVER_URL = "https://personal-contacts-manager.herokuapp.com";
+
+const particlesOptions =
+{
+   particles:
+   {
+      number:
+      {
+         value: 75,
+         density:
+         {
+            enable: true,
+            value_area: 800
+         }
+      }
+   }
+}
 
 class Signin extends Component
 {
@@ -52,7 +70,7 @@ class Signin extends Component
          if(responseData.error !== "")
          {
             this.setState({
-               error:responseData.error,
+               error: responseData.error,
                uid: ''
             });
 
@@ -86,21 +104,25 @@ class Signin extends Component
    render()
    {
       const logInPage = (
-         <div className="Background">
-            <div className='Container'>
-               <h1 className='AppTitle'>CONTACTS MANAGER</h1>
-               <input className='Field' type='text' onChange={event => this.setState({username: event.target.value})}></input>
-               <input className='Field' type='password' onChange={event => this.setState({password: event.target.value})}></input>
-               <div className='ButtonContainer'>
-                  <input className='LoginButton' type='button' value='LOGIN' onClick={() => this.handleRegisterOrLogin(false)}></input>
-                  <input className='RegisterButton' type='button' value='REGISTER' onClick={() => this.handleRegisterOrLogin(true)}></input>
+         <div className = "Signin">
+            <Particles className = "particles" params = {particlesOptions}/>
+
+            <div className = "FormContent">
+               <h1 className = "AppTitle">CONTACTS MANAGER</h1>
+
+               <input className = "Field" type = "text" onChange={event => this.setState({username: event.target.value})}></input>
+               <input className = "Field" type = "password" onChange={event => this.setState({password: event.target.value})}></input>
+
+               <div className = "ButtonContainer">
+                  <button className = "LoginButton" onClick={() => this.handleRegisterOrLogin(false)}>Login</button>
+                  <button className = "RegisterButton" onClick={() => this.handleRegisterOrLogin(true)}>Register</button>
                </div>
-               <p className='ErrorMessage'>{this.state.error}</p>
-           </div>
+               <p className = "ErrorMessage">{this.state.error}</p>
+            </div>
          </div>
       );
 
-      const home = <Home uid={this.state.uid} logout={() => this.handleLogout()}></Home>;
+      const home = <Home uid = {this.state.uid} logout = {() => this.handleLogout()}></Home>;
 
       return this.state.isLoggedIn ? home : logInPage;
    }

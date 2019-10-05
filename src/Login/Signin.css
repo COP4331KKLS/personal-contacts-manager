@@ -1,10 +1,5 @@
-.Signin {
-  text-align: center;
-  font-size: 23px;
-}
-
-.Background {
-  background-color: #483D3F;
+.Signin
+{
   height: 100%;
   width: 100%;
   display: flex;
@@ -12,25 +7,31 @@
   align-items: center;
 }
 
-.AppTitle {
+.particles
+{
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   z-index: -1;
+}
+
+.AppTitle
+{
   text-align: center;
   color: white;
 }
 
-.Container {
+.FormContent
+{
   width: 40%;
   display: flex;
   flex-direction: column;
 }
 
-.Field {
-  font-family: 'Be Vietnam', sans-serif;
-  font-size: 23px;
-  margin: 10px 0px;
-  height: 40px;
-}
-
-.ButtonContainer {
+.ButtonContainer
+{
   margin-top: 10px;
   display: flex;
   color: white;
@@ -38,7 +39,32 @@
   justify-content: space-evenly;
 }
 
-.CustomButton {
+.LoginButton
+{
+   width: 40%;
+   text-align: center;
+   color: white;
+   font-size: 15px;
+}
+
+.RegisterButton
+{
+   width: 40%;
+   text-align: center;
+   color: white;
+   font-size: 15px;
+}
+
+.Field
+{
+  font-family: 'Be Vietnam', sans-serif;
+  font-size: 23px;
+  margin: 10px 0px;
+  height: 40px;
+}
+
+.CustomButton
+{
   min-width: 40%;
   font-size: 23px;
   padding: 7px 7px;
@@ -50,19 +76,8 @@
   transition-duration: 0.4s;
 }
 
-.CustomButton:hover {
-  background-color: #77685D; /* Green */
-  color: white;
-}
-
-.ErrorMessage {
+.ErrorMessage
+{
   text-align: center;
   color: #fff;
-}
-
-.HomePage {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: white;
 }

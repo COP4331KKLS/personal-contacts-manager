@@ -1,0 +1,65 @@
+constructor()
+{
+   super();
+   this.state =
+   {
+      uid: '',
+      firstName: '',
+      lastName: '',
+      company: '',
+      phoneNumber: '',
+      email: '',
+      address: '',
+      error: ''
+   }
+}
+
+handleCreateContact = () =>
+{
+   let requestUrl = SERVER_URL;
+
+   this.setState({
+      error: '',
+      uid: ''
+   });
+
+   fetch(requestUrl,
+   {
+      method: 'POST',
+      headers: {
+         'uid': this.state.uid
+      },
+      body: {
+         'firstName': this.state.firstName,
+         'lastName': this.state.lastName,
+         'company': this.state.company,
+         'phoneNumber': this.state.phoneNumber,
+         'email': this.state.email,
+         'address': this.state.address
+      }
+   })
+   .then(response => response.json())
+   .then(responseData =>
+   {
+      if(responseData.error !== "")
+      {
+         this.setState({
+            error: responseData.error,
+            uid: ''
+         });
+
+         return;
+      }
+
+      this.setState({
+         uid: responseData.message
+      });
+   })
+   .catch( error =>
+   {
+      this.setState({
+         error: `Internal server error. ${error}`,
+         uid: ''
+      });
+   });
+}

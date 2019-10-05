@@ -2,8 +2,18 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: #483D3F;
 }
+
+.particles
+{
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   z-index: -1;
+}
+
 
 .Content {
   height: 100%;
@@ -21,12 +31,9 @@
 
 .LogoutButton {
   text-align: center;
-  width: 130px;
-  font-size: 20px;
-  border: 1.5px solid black;
-  border-radius: 3px;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+  width: 10%;
+  font-size: 12px;
+  color: white;
 }
 
 .LogoutButton:hover {
@@ -49,10 +56,4 @@
    margin-right: 0.5%;
    width: 10%;
    color: white;
-}
-
-.NewContactButton
-{
-   color: white;
-   width: 35.5%;
 }
