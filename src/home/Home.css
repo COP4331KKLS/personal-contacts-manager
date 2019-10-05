@@ -38,20 +38,26 @@
 
 .LogoutButton {
   color: white;
-  /* background-color: red; */
-  text-align: right;
-  margin: auto;
-  width: 130px;
-  font-size: 30px;
-  border: 1.5px solid black;
-  border-radius: 3px;
+  background-color: black;
+  text-align: center;
+  margin-top: 1%;
+  margin-right: 3%;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1.5px solid white;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
-  margin-right: 3%;
+  /* margin: auto;
+  width: 130px;
+  font-size: 20px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+
+  border-color: white; */
 }
 
 .LogoutButton:hover {
-  background-color: #A23E48; /* Green */
+  background-color: red; /* Green */
   color: white;
   border-color: #fff;
 }
@@ -63,6 +69,11 @@
    margin-right: auto;
    flex-direction: row;
      font-family: myFirstFont;
+}
+
+.tableHeader {
+  color: white;
+
 }
 
 .SearchBox {
@@ -81,6 +92,9 @@
   font-size: 20px;
   background-color: black;
   color: blue;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  margin: auto;
   /* height: 50px; */
 }
 
@@ -88,23 +102,41 @@
   font-size: 20px;
   background-color: black;
   color: red;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  margin: auto;
+}
+
+.deleteButton:hover {
+  color: black;
+  background-color: red;
 }
 
 .SearchButton {
    margin-right: 0.5%;
    width: 10%;
-   color: white;
+   color: gray;
    background-color: red;
+   font-size: 20px;
+   -webkit-transition-duration: 0.4s;
+   transition-duration: 0.4s;
 }
 
 .NewContactButton
 {
    color: white;
    width: 35.5%;
-   background-color: silver;
+   background-color: gray;
+   color: black;
+   font-size: 20px;
+   -webkit-transition-duration: 0.4s;
+   transition-duration: 0.4s;
 }
 
-
+.NewContactButton:hover {
+  background-color: black;
+  color: white;
+}
 
 .EmptyResults {
   /* text-align: center; */
@@ -136,6 +168,10 @@ td {
 
 .tableResults {
   /* border: 10px solid; */
+}
+
+.EmptyResults {
+  color: gray;
 }
 
 table.center {

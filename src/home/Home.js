@@ -253,7 +253,7 @@ class Home extends Component
       header.push("")
       header[6] = ""
       return header.map((key, index) => {
-         return <th key={index}>{key.toUpperCase()}</th>
+         return <th class="tableHeader" key={index}>{key.toUpperCase()}</th>
       })
     }
 
@@ -298,7 +298,7 @@ class Home extends Component
       return (
          <div className='HomeBackground'>
             <div className='LogoutContainer'>
-               <input class='LogoutButton' type="button" value='LOGOUT' onClick={() => this.props.logout()}></input>
+               <button class='LogoutButton button' value='LOGOUT' onClick={() => this.props.logout()}>LOGOUT</button>
             </div>
 
             <div className = 'Content'>

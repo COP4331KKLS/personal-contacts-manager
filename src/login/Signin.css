@@ -43,13 +43,12 @@
 .ButtonContainer {
   margin-top: 10px;
   display: flex;
-  color: white;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
 .CustomButton {
-  /* background-color: black; */
+  background-color: black;
   min-width: 40%;
   font-size: 23px;
   padding: 7px 7px;
@@ -79,8 +78,23 @@
 }
 
 .LoginButton {
+  text-align: center;
   color: white;
   background-color: black;
+  height: 40px;
+  width: 160px;
+    font-family: myFirstFont;
+    font-size: 15px;
+}
+
+.RegisterButton {
+  /* text-align: center; */
+  color: white;
+  background-color: black;
+  height: 40px;
+  width: 160px;
+    font-family: myFirstFont;
+    font-size: 15px;
 }
 
 .center {
