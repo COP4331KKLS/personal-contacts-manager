@@ -163,17 +163,19 @@ submitEditContact= (e) =>{
   //Send JSON of form for update
   for(var i=0; i<newArray.length; i++)
   {
-    if(newArray[i].CID===e.target.value)
+    if(newArray[i].CID===this.state.editPreFillContactID)
     {
       indexEdit = i;
     }
   }
+  //
+  // console.log("SUBMIT EDIT CONTACT");
+  // console.log(this.state.editPreFillFirstName);
+  // alert("Test");
 
-  console.log("SUBMIT EDIT CONTACT");
-  console.log(this.state.editPreFillFirstName);
-  alert("Test");
-  alert(`${newArray[indexEdit].Phone}`);
-
+  //
+  if(indexEdit !== -1)
+  {
   newArray[indexEdit] = {
     "First Name": this.state.editPreFillFirstName,
     "Last Name" : this.state.editPreFillLastName,
@@ -184,13 +186,16 @@ submitEditContact= (e) =>{
     "CID": e.target.value
   };
   this.setState({contacts : newArray});
-  alert(`${newArray[indexEdit].Phone}`);
-  console.log(this.state.editPreFillLastName);
-  console.log(this.editCompany);
-  console.log(this.editPhone);
-  console.log(this.editEmail);
-  console.log(this.editAddress);
+  // alert(`${newArray[indexEdit].Phone}`);
+  // console.log(this.state.editPreFillLastName);
+  // console.log(this.editCompany);
+  // console.log(this.editPhone);
+  // console.log(this.editEmail);
+  // console.log(this.editAddress);
   this.setState({showContactOpen: false});
+} else {
+  alert("Error Editing Contact");
+}
 }
 
  getIndex = (value, array) => {
@@ -305,7 +310,7 @@ submitEditContact= (e) =>{
                         <input onChange={this.handleEmailChange} value={this.state.editPreFillEmail} type = "text" id = "email" name = "email"/>
 
                         <label id = "address">Address</label>
-                        <input onChange={this.handleEmailChange} value={this.state.editPreFillAddress} type = "text" id = "address" name = "address"/>
+                        <input onChange={this.handleAddressChange} value={this.state.editPreFillAddress} type = "text" id = "address" name = "address"/>
 
                         <br></br>
 
