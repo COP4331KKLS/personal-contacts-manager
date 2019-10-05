@@ -96,14 +96,14 @@ class Home extends Component
     return this.state.contacts.map((contact, index) => {
        const {"First Name":First_Name,"Last Name": Last_Name, Company, Phone, Email, Address, CID } = contact //destructuring
        return (
-          <tr keyContact={CID}>
-             <td fName={First_Name}>{First_Name}</td>
+          <tr keyContact={CID} class="displayResults">
+             <td fName={First_Name} class="firstname">{First_Name}</td>
              <td>{Last_Name}</td>
              <td>{Company}</td>
              <td>{Phone}</td>
              <td>{Email}</td>
              <td>{Address}</td>
-             <td><button value={CID}
+             <td class="tableButtons"><button class="editButton button" value={CID}
              fName={First_Name}
              lName={Last_Name}
              company={Company}
@@ -111,92 +111,13 @@ class Home extends Component
              email={Email}
              address={Address}
              onClick={this.editContact}>Edit</button></td>
-             <td><button value={CID} onClick={this.deleteContact}>Delete</button></td>
+             <td class="tableButtons"><button value={CID} class="deleteButton button" onClick={this.deleteContact}>Delete</button></td>
           </tr>
        )
     })
     // this.setState({doRender: false});
 
  }
-
-
- editContact = (el) =>{
-   const First_Name = el.target.getAttribute('fName');
-   const Last_Name = el.target.getAttribute('lName');
-   const Company = el.target.getAttribute('company');
-   const Phone = el.target.getAttribute('phone');
-   const Email = el.target.getAttribute('email');
-   const Address =  el.target.getAttribute('address');
-   console.log(First_Name);
-   console.log(Last_Name);
-   console.log(Company);
-   console.log(Phone);
-   console.log(Email);
-   console.log(Address);
-   // this.getFirstName();
-   console.log("Edit Contact");
-   // modal.firstname.value =
-   // document.getElementById("EditContactss").getElementById("first-name-input");
-   // this.editContact.getElementById("first-name-input").value = First_Name;
-   // document.getElementById("first-name-edit").value=First_Name;
-   console.log(el.target.value);
-   this.setState({editPreFillFirstName: First_Name});
-   this.setState({editPreFillLastName: Last_Name});
-   this.setState({editPreFillCompany : Company});
-   this.setState({editPreFillPhone: Phone});
-   this.setState({editPreFillEmail: Email});
-   this.setState({editPreFillAddress: Address});
-   this.setState({editFirstName: First_Name});
-   this.setState({editLastName: Last_Name});
-   this.setState({editCompany : Company});
-   this.setState({editPhone: Phone});
-   this.setState({editEmail: Email});
-   this.setState({editAddress: Address});
-   this.setState({editPreFillContactID: el.target.value});
-   this.setState({showContactOpen: true});
- }
-
-submitEditContact= (e) =>{
-  // alert(`${this.state.editPreFillFirstName}`);
-  var indexEdit = -1;
-  var newArray = this.state.contacts.slice();
-  //Send JSON of form for update
-  for(var i=0; i<newArray.length; i++)
-  {
-    if(newArray[i].CID===this.state.editPreFillContactID)
-    {
-      indexEdit = i;
-    }
-  }
-  //
-  // console.log("SUBMIT EDIT CONTACT");
-  // console.log(this.state.editPreFillFirstName);
-  // alert("Test");
-
-  //
-  if(indexEdit !== -1)
-  {
-  newArray[indexEdit] = {
-    "First Name": this.state.editPreFillFirstName,
-    "Last Name" : this.state.editPreFillLastName,
-    "Company" : this.state.editPreFillCompany,
-    "Phone" : this.state.editPreFillPhone,
-    "Email": this.state.editPreFillEmail,
-    "Address": this.state.editPreFillAddress,
-    "CID": e.target.value
-  };
-  this.setState({contacts : newArray});
-  // alert(`${newArray[indexEdit].Phone}`);
-  // console.log(this.state.editPreFillLastName);
-  // console.log(this.editCompany);
-  // console.log(this.editPhone);
-  // console.log(this.editEmail);
-  // console.log(this.editAddress);
-  this.setState({showContactOpen: false});
-} else {
-  alert("Error Editing Contact");
-}
-}
 
  getIndex = (value, array) => {
   for(var i=0; i<this.state.contacts.length; i++)
@@ -209,6 +130,48 @@ submitEditContact= (e) =>{
   }
 }
 
+   editContact = (el) =>{
+  const First_Name = el.target.getAttribute('fName');
+  const Last_Name = el.target.getAttribute('lName');
+  const Company = el.target.getAttribute('company');
+  const Phone = el.target.getAttribute('phone');
+  const Email = el.target.getAttribute('email');
+  const Address =  el.target.getAttribute('address');
+  console.log(First_Name);
+  console.log(Last_Name);
+  console.log(Company);
+  console.log(Phone);
+  console.log(Email);
+  console.log(Address);
+  // this.getFirstName();
+  console.log("Edit Contact");
+  // modal.firstname.value =
+  // document.getElementById("EditContactss").getElementById("first-name-input");
+  // this.editContact.getElementById("first-name-input").value = First_Name;
+  // document.getElementById("first-name-edit").value=First_Name;
+  console.log(el.target.value);
+  this.setState({editPreFillFirstName: First_Name});
+  this.setState({editPreFillLastName: Last_Name});
+  this.setState({editPreFillCompany : Company});
+  this.setState({editPreFillPhone: Phone});
+  this.setState({editPreFillEmail: Email});
+  this.setState({editPreFillAddress: Address});
+  this.setState({editFirstName: First_Name});
+  this.setState({editLastName: Last_Name});
+  this.setState({editCompany : Company});
+  this.setState({editPhone: Phone});
+  this.setState({editEmail: Email});
+  this.setState({editAddress: Address});
+  this.setState({editPreFillContactID: el.target.value});
+  this.setState({showContactOpen: true});
+}
+
+   addContact = () => {
+     this.setState({ isCreateContactOpen: true });
+   }
+
+
+// JSON REQUESTS NEEDED
    deleteContact= (e) =>{
      var indexDelete = -1//this.getIndex(newArray);
      console.log("Delete Contact");
@@ -229,22 +192,75 @@ submitEditContact= (e) =>{
      console.log(e.target.value);
      console.log(e.target.index);
      //Call delete request
-     // this.setState({doRender: false});
    }
 
+   searchSubmit = (evt) => {
+     this.setState({doRender: true})
+     /*
+     this.setState({contacts: {}})
+     this.setState({JSON REQUEST})
+     */
+   }
+
+   submitEditContact= (e) =>{
+     // alert(`${this.state.editPreFillFirstName}`);
+     var indexEdit = -1;
+     var newArray = this.state.contacts.slice();
+     //Send JSON of form for update
+     for(var i=0; i<newArray.length; i++)
+     {
+       if(newArray[i].CID===this.state.editPreFillContactID)
+       {
+         indexEdit = i;
+       }
+     }
+     //
+     // console.log("SUBMIT EDIT CONTACT");
+     // console.log(this.state.editPreFillFirstName);
+     // alert("Test");
+
+     //
+     if(indexEdit !== -1)
+     {
+     newArray[indexEdit] = {
+       "First Name": this.state.editPreFillFirstName,
+       "Last Name" : this.state.editPreFillLastName,
+       "Company" : this.state.editPreFillCompany,
+       "Phone" : this.state.editPreFillPhone,
+       "Email": this.state.editPreFillEmail,
+       "Address": this.state.editPreFillAddress,
+       "CID": e.target.value
+     };
+     this.setState({contacts : newArray});
+     this.setState({showContactOpen: false});
+
+     //JSON EDIT REQUEST
+
+   } else {
+     alert("Error Editing Contact");
+     // event.preventDefault();
+   }
+   }
+
+   addSubmit = () => {
+     // JSON REQUEST
+   }
 
    renderTableHeader() {
      // alert(`${this.state.contacts.length}`)
      if(this.state.contacts.length>0){
       let header = Object.keys(this.state.contactHeader)
+      header.push("")
       header[6] = ""
       return header.map((key, index) => {
          return <th key={index}>{key.toUpperCase()}</th>
       })
     }
 
-    return <h1>These aren't the droids you're looking for</h1>
+    return <h1 class="EmptyResults">These aren't the droids you're looking for</h1>
    }
+
+
 
    handleFirstNameChange = (evt) => {
      // const test = evt.target.value;
@@ -254,39 +270,48 @@ submitEditContact= (e) =>{
      // console.log(evt.target.value);
      // console.log(this.editPreFillFirstName);
    }
+
    handleLastNameChange = (evt) => {
      this.setState({editPreFillLastName: evt.target.value});
    }
+
    handleCompanyChange = (evt) => {
      this.setState({editPreFillCompany: evt.target.value});
    }
+
    handlePhoneChange = (evt) => {
      this.setState({editPreFillPhone: evt.target.value});
    }
+
    handleEmailChange = (evt) => {
      this.setState({editPreFillEmail: evt.target.value});
    }
+
    handleAddressChange = (evt) => {
      this.setState({editPreFillAddress: evt.target.value});
    }
+
+
    render()
    {
 
       return (
          <div className='HomeBackground'>
             <div className='LogoutContainer'>
-               <input className='LogoutButton' value='LOGOUT' onClick={() => this.props.logout()}></input>
+               <input class='LogoutButton' type="button" value='LOGOUT' onClick={() => this.props.logout()}></input>
             </div>
 
             <div className = 'Content'>
-            <h1>HELLO THERE</h1>
+            <h1 class="homeTitle">HELLO THERE</h1>
             <br></br>
-               <button className = "SearchButton" value='Search' onClick={() => this.setState({doRender: true})}>Search</button>
+            <div class = "mainUtil">
+               <button className = "SearchButton button" value='Search' onClick={this.searchSubmit}>Search</button>
                <input type = "text" id = "search" className = "SearchBox"/>
 
                <br></br>
 
-               <button className = "NewContactButton" onClick = {(e) => this.setState({ isCreateContactOpen: true })}>Add New Contact</button>
+               <button className = "NewContactButton button" onClick = {this.addContact}>Add New Contact</button>
+            </div>
                <CreateContactModal isCreateContactOpen = {this.state.isCreateContactOpen} onClose = {(e) => this.setState({isCreateContactOpen: false})}/>
 
                {this.state.showContactOpen ? <EditContactModal id="EditContactss" isEditContactOpen = {this.state.showContactOpen} onClose = {(e) => this.setState({showContactOpen: false})}>
@@ -323,8 +348,8 @@ submitEditContact= (e) =>{
 
 
                <br></br>
-               {this.state.doRender? <h1 id="table-title">Search Results:</h1> : null}
-               <table id='students'>
+               {this.state.doRender? <h1 id="table-title" class="searchResultsTitle">Search Results:</h1> : null}
+               <table id='students' class="center tableResults">
                   <tbody>
                      <tr>{this.state.doRender ? this.renderTableHeader() : null}</tr>
                      {this.state.doRender ? this.renderTableData() : null}

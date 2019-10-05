@@ -88,11 +88,12 @@ class Signin extends Component
       const logInPage = (
          <div className="Background">
             <div className='Container'>
-               <h1 className='AppTitle'>HELLO THERE <br></br>(GENERAL KENOBI)</h1>
+               <h1 className='AppTitle'>HELLO THERE<br></br>(GENERAL KENOBI)</h1>
+               <img src="https://i.kym-cdn.com/photos/images/original/001/475/420/c62.gif" class="center"></img>
                <input className='Field' type='text' onChange={event => this.setState({username: event.target.value})}></input>
                <input className='Field' type='password' onChange={event => this.setState({password: event.target.value})}></input>
                <div className='ButtonContainer'>
-                  <input className='LoginButton' type='button' value='LOGIN' onClick={() => this.handleRegisterOrLogin(false)}></input>
+                  <input class='LoginButton' type='button' value='LOGIN' onClick={() => this.handleRegisterOrLogin(false)}></input>
                   <input className='RegisterButton' type='button' value='REGISTER' onClick={() => this.handleRegisterOrLogin(true)}></input>
                </div>
                <p className='ErrorMessage'>{this.state.error}</p>

@@ -1,8 +1,25 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(star-wars-font.woff);
+}
+
+.homeTitle {
+  text-align: center;
+  color: white;
+  font-family: myFirstFont;
+  /* font-family: sans-serif; */
+}
+
 .HomeBackground {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: #483D3F;
+  /* background-color: #483D3F; */
+  background: url("./PIA09959-1280x800_copy.jpg");
+  background-size:cover;
+  overflow: hidden;
+    /* background-position:top;
+    background: cover; */
 }
 
 .Content {
@@ -20,13 +37,17 @@
 }
 
 .LogoutButton {
-  text-align: center;
+  color: white;
+  /* background-color: red; */
+  text-align: right;
+  margin: auto;
   width: 130px;
-  font-size: 20px;
+  font-size: 30px;
   border: 1.5px solid black;
   border-radius: 3px;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
+  margin-right: 3%;
 }
 
 .LogoutButton:hover {
@@ -36,23 +57,95 @@
 }
 
 .Content {
+  /* width: 95% */
    margin-top: 5%;
-   margin-left: 35%;
+   margin-left: 0%;
+   margin-right: auto;
    flex-direction: row;
+     font-family: myFirstFont;
 }
 
 .SearchBox {
    width: 25%;
 }
 
+.mainUtil {
+  /* align-items: right; */
+  /* width: 90%; */
+  margin-left: 0%;
+  text-align: center;
+  /* margin-right: 5%; */
+}
+
+.editButton {
+  font-size: 20px;
+  background-color: black;
+  color: blue;
+  /* height: 50px; */
+}
+
+.deleteButton {
+  font-size: 20px;
+  background-color: black;
+  color: red;
+}
+
 .SearchButton {
    margin-right: 0.5%;
    width: 10%;
    color: white;
+   background-color: red;
 }
 
 .NewContactButton
 {
    color: white;
    width: 35.5%;
+   background-color: silver;
+}
+
+
+
+.EmptyResults {
+  /* text-align: center; */
+}
+
+.searchResultsTitle {
+  margin-left: 15%;
+  color: white;
+}
+
+.displayResults {
+  background-color: blue;
+  /* border: 10px solid; */
+}
+
+td {
+  /* border: 10px solid black; */
+  height: 5px;
+}
+
+.tableButtons {
+  background-color: silver;
+}
+
+.firstname {
+  /* padding-left: 5px; */
+  text-indent: 10px;
+}
+
+.tableResults {
+  /* border: 10px solid; */
+}
+
+table.center {
+  width:70%;
+  margin-left:auto;
+  margin-right:auto;
+  color: white;
+  background-color: ;
+}
+
+.button {
+  font-family: myFirstFont;
 }
