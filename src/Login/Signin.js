@@ -106,7 +106,6 @@ class Signin extends Component
       const logInPage = (
          <div className = "Signin">
             <Particles className = "particles" params = {particlesOptions}/>
-
             <div className = "FormContent">
                <h1 className = "AppTitle">CONTACTS MANAGER</h1>
 

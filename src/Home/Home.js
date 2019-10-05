@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
-import './Home.css';
 import CreateContactModal from '../CreateContact/CreateContactModal';
 import EditContactModal from '../EditContact/EditContactModal';
 import ContactList from '../ContactList/ContactList';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Home.css';
 import Particles from 'react-particles-js';
-import { Container } from 'reactstrap';
+
+import {
+   Collapse,
+   Navbar,
+   NavbarToggler,
+   NavbarBrand,
+   Nav,
+   NavItem,
+   NavLink,
+   Container
+} from 'reactstrap';
 
 import { Provider } from 'react-redux';
 import store from '../store';
-
-document.body.style = 'background: #483D3F;';
 
 const particlesOptions =
 {
@@ -29,29 +38,49 @@ const particlesOptions =
 
 class Home extends Component
 {
+   state = {
+      isNavbarOpen: false
+   }
+
+   toggleNavbar = () => {
+      this.setState({
+         isNavbarOpen: !this.state.isNavbarOpen
+      });
+   }
+
    render()
    {
       return (
          <Provider store = {store}>
-            <div className='HomeBackground'>
-               <Particles className = "particles" params = {particlesOptions}/>
+            <Particles className = "particles" params = {particlesOptions}/>
 
-               <div className='LogoutContainer'>
-                  <button className='LogoutButton' onClick={() => this.props.logout()}>Logout</button>
-               </div>
-
-               <div className = 'Content'>
-                  <div className = "InputContainer">
-                     <button className = "SearchButton" value = 'Search' onClick={() => this.setState({doRender: true})}>Search</button>
-                     <input type = "text" id = "search" className = "SearchBox"/>
-                     <br></br>
-                  </div>
-                  
+            <div className = "Home">
+               <Navbar color = "dark" dark expand = "sm">
                   <Container>
-                     <CreateContactModal/>
-                     <ContactList />
+                     <NavbarBrand href = "/">Contact Manager</NavbarBrand>
+                     <NavbarToggler onClick = {this.toggleNavbar}/>
+                     <Collapse isOpen = {this.state.isNavbarOpen} navbar>
+                        <NavItem className = "ml-auto">
+                        <div className = "SearchContainer">
+                           <button className = "SearchButton" value = 'Search' onClick={() => this.setState({doRender: true})}>Search</button>
+                           <input type = "text" id = "search" className = "SearchBox"/>
+                        </div>
+                        </NavItem>
+
+                        <Nav className = "ml-auto" navbar>
+                           <NavItem>
+                              <button className='LogoutButton' onClick={() => this.props.logout()}>Logout</button>
+                           </NavItem>
+                        </Nav>
+                     </Collapse>
                   </Container>
-               </div>
+               </Navbar>
+
+               <Container className = "Content">
+                  <CreateContactModal />
+                  <ContactList />
+               </Container>
+
             </div>
          </Provider>
       );

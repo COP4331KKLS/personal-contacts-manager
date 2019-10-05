@@ -1,38 +1,5 @@
-.HomeBackground {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-
-.particles
+.LogoutButton
 {
-   position: fixed;
-   top: 0;
-   right: 0;
-   bottom: 0;
-   left: 0;
-   z-index: -1;
-}
-
-
-.Content {
-  height: 100%;
-  width: 100%;
-}
-
-.LogoutContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  float: right;
-  height: 6%;
-  width: 100%;
-}
-
-.LogoutButton {
-  text-align: center;
-  width: 10%;
-  font-size: 12px;
   color: white;
 }
 
@@ -44,16 +11,41 @@
 
 .Content {
    margin-top: 5%;
-   margin-left: 35%;
+   margin-left: %;
    flex-direction: row;
 }
 
 .SearchBox {
-   width: 25%;
+   width: 55%;
 }
 
 .SearchButton {
    margin-right: 0.5%;
-   width: 10%;
    color: white;
+}
+
+.RemoveButton {
+  margin-right: 0.5rem;
+}
+
+.EditButton {
+  margin-right: 0.5rem;
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 1000ms ease-in;
 }

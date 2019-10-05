@@ -7,33 +7,18 @@ const initialState =
    [
       {
          uid: uuid(),
-         firstName: "Kyle",
-         lastName: "Rits",
-         company: 'asd',
-         phoneNumber: '131231',
-         email: '213',
-         address: '',
+         firstName: "Kyle"
       },
       {
          uid: uuid(),
-         firstName: "Kevin",
-         lastName: "Rabinowitz",
-         company: '',
-         phoneNumber: 'dasda',
-         email: '',
-         address: 'dadasdas',
+         firstName: "Kevin"
       },
       {
          uid: uuid(),
-         firstName: "LLOYD",
-         lastName: "Dapaah",
-         company: 'dasdd',
-         phoneNumber: 'asdasd',
-         email: 'dasd',
-         address: '',
+         firstName: "Stefan"
       }
    ]
-}
+};
 
 export default function(state = initialState, action)
 {

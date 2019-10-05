@@ -1,0 +1,20 @@
+<div className='Home'>
+   <Particles className = "particles" params = {particlesOptions}/>
+
+   <div className='LogoutContainer'>
+      <button className='LogoutButton' onClick={() => this.props.logout()}>Logout</button>
+   </div>
+
+   <div className = 'Content'>
+      <div className = "InputContainer">
+         <button className = "SearchButton" value = 'Search' onClick={() => this.setState({doRender: true})}>Search</button>
+         <input type = "text" id = "search" className = "SearchBox"/>
+         <br></br>
+      </div>
+
+      <Container>
+         <CreateContactModal/>
+         <ContactList />
+      </Container>
+   </div>
+</div>

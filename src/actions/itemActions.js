@@ -6,7 +6,7 @@ export const getContacts = () =>
    return {
       type: GET_CONTACTS
    };
-}
+};
 
 export const deleteContact = (uid) =>
 {
@@ -14,7 +14,7 @@ export const deleteContact = (uid) =>
       type: DELETE_CONTACT,
       payload: uid
    };
-}
+};
 
 export const addContact = (contact) =>
 {
@@ -22,4 +22,4 @@ export const addContact = (contact) =>
       type: ADD_CONTACT,
       payload: contact
    };
-}
+};
