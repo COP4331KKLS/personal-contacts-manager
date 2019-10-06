@@ -93,27 +93,27 @@ class Home extends Component
                          phoneNumber: '808-990-5604',
                          email: 'KyleRits@Knights.ucf.edu',
                          address: '3721 Pyrite Drive',
-                         cid: 'Blah'
+                         cid: '1'
                      },
                      {
                        uid: '',
-                       firstName: 'Kyle',
+                       firstName: 'KEvin',
                        lastName: 'Rits',
                        company: '',
                        phoneNumber: '808-990-5604',
                        email: 'KyleRits@Knights.ucf.edu',
                        address: '3721 Pyrite Drive',
-                       cid: 'Blah'
+                       cid: '2'
                      },
                      {
                        uid: '',
-                       firstName: 'Kyle',
+                       firstName: 'Stefan',
                        lastName: 'Rits',
                        company: '',
                        phoneNumber: '808-990-5604',
                        email: 'KyleRits@Knights.ucf.edu',
                        address: '3721 Pyrite Drive',
-                       cid: 'Blah'
+                       cid: '3'
                      }
                  ],
         doRender: false,
@@ -135,6 +135,36 @@ class Home extends Component
 
    }
 
+handleFirstNameChange = (evt) => {
+  // const test = evt.target.value;
+  // console.log(test);
+  this.setState({editPreFillFirstName: evt.target.value});
+  // console.log(this.editPreFillContactID);
+  // console.log(evt.target.value);
+  // console.log(this.editPreFillFirstName);
+}
+
+handleLastNameChange = (evt) => {
+  this.setState({editPreFillLastName: evt.target.value});
+}
+
+handleCompanyChange = (evt) => {
+  this.setState({editPreFillCompany: evt.target.value});
+}
+
+handlePhoneChange = (evt) => {
+  this.setState({editPreFillPhone: evt.target.value});
+}
+
+handleEmailChange = (evt) => {
+  this.setState({editPreFillEmail: evt.target.value});
+}
+
+handleAddressChange = (evt) => {
+  this.setState({editPreFillAddress: evt.target.value});
+}
+
+
    renderTableData() {
     return this.state.contacts.map((contact, index) => {
        const {firstName:First_Name,lastName: Last_Name, company, phoneNumber, email, address, cid } = contact //destructuring
@@ -153,7 +183,7 @@ class Home extends Component
              phone={phoneNumber}
              email={email}
              address={address}
-             onClick={this.toggleEditModal}>Edit</button></td>
+             onClick={this.editContact}>Edit</button></td>
              <td class="tableButtons"><button value={cid} class="deleteButton button" onClick={this.deleteContact}>Delete</button></td>
 
              <Modal isOpen = {this.state.editModal} toggle = {this.toggleEditModal}>
@@ -166,7 +196,8 @@ class Home extends Component
                            type = "text"
                            name = "firstName"
                            id = "contact"
-                           onChange = {event => this.setState({firstName: event.target.value})}
+                           onChange={this.handleFirstNameChange}
+                           value={this.state.editPreFillFirstName}
                         />
 
                         <Label for = "contact">Last Name</Label>
@@ -174,7 +205,8 @@ class Home extends Component
                            type = "text"
                            name = "lastName"
                            id = "contact"
-                           onChange = {event => this.setState({lastName: event.target.value})}
+                           onChange={this.handleLastNameChange}
+                           value={this.state.editPreFillLastName}
                         />
 
                         <Label for = "contact">Company</Label>
@@ -182,7 +214,8 @@ class Home extends Component
                            type = "text"
                            name = "company"
                            id = "contact"
-                           onChange = {event => this.setState({company: event.target.value})}
+                           onChange={this.handleCompanyChange}
+                           value={this.state.editPreFillCompany}
                         />
 
                         <Label for = "contact">Phone Number</Label>
@@ -190,7 +223,8 @@ class Home extends Component
                            type = "text"
                            name = "phoneNumber"
                            id = "contact"
-                           onChange = {event => this.setState({phoneNumber: event.target.value})}
+                           onChange={this.handlePhoneChange}
+                           value={this.state.editPreFillPhone}
                         />
 
                         <Label for = "contact">Email</Label>
@@ -198,7 +232,8 @@ class Home extends Component
                            type = "text"
                            name = "email"
                            id = "contact"
-                           onChange = {event => this.setState({email: event.target.value})}
+                           onChange={this.handleEmailChange}
+                           value={this.state.editPreFillEmail}
                         />
 
                         <Label for = "contact">Address</Label>
@@ -206,13 +241,14 @@ class Home extends Component
                            type = "text"
                            name = "address"
                            id = "contact"
-                           onChange = {event => this.setState({address: event.target.value})}
+                           onChange={this.handleAddressChange}
+                           value={this.state.editPreFillAddress}
                         />
 
                         <Button
                            color = 'dark'
                            style = {{marginTop: '2rem'}}
-                           onClick = {() => this.handleCreateContact()}
+                           onClick = {() => this.submitEditContact()}
                            block
                         >Add Contact</Button>
                      </FormGroup>
@@ -257,7 +293,7 @@ class Home extends Component
   this.setState({editEmail: Email});
   this.setState({editAddress: Address});
   this.setState({editPreFillContactID: el.target.value});
-  this.setState({showContactOpen: true});
+  this.toggleEditModal();
 }
 
    deleteContact= (e) =>{
@@ -282,14 +318,21 @@ class Home extends Component
      //Call delete request
    }
 
+   submitSearch = (e) => {
+     this.setState({doRender: true});
+     alert('Line 287    ' + this.state.uid);
+   }
+
    submitEditContact= (e) =>{
      // alert(`${this.state.editPreFillFirstName}`);
      var indexEdit = -1;
      var newArray = this.state.contacts.slice();
+          alert("Edit Contact ID " + this.state.editPreFillContactID);
      //Send JSON of form for update
      for(var i=0; i<newArray.length; i++)
      {
-       if(newArray[i].CID===this.state.editPreFillContactID)
+       alert("Array " + i + " CID " + newArray[i].cid);
+       if(newArray[i].cid===this.state.editPreFillContactID)
        {
          indexEdit = i;
        }
@@ -303,16 +346,19 @@ class Home extends Component
      if(indexEdit !== -1)
      {
      newArray[indexEdit] = {
+       uid: this.props.uid,
        firstName: this.state.editPreFillFirstName,
        lastName : this.state.editPreFillLastName,
        company : this.state.editPreFillCompany,
        phoneNumber : this.state.editPreFillPhone,
        email: this.state.editPreFillEmail,
        address: this.state.editPreFillAddress,
-       cid: e.target.value
+       cid: this.state.editPreFillContactID
      };
      this.setState({contacts : newArray});
-     this.setState({showContactOpen: false});
+     // this.setState({showContactOpen: false});
+     this.toggleEditModal();
+
 
      //JSON EDIT REQUEST
 
@@ -350,7 +396,7 @@ class Home extends Component
                      <Collapse isOpen = {this.state.isNavbarOpen} navbar>
                         <NavItem className = "ml-auto">
                         <div className = "SearchContainer">
-                           <button className = "SearchButton" value = 'Search' onClick={() => this.setState({doRender: true})}>Search</button>
+                           <button className = "SearchButton" value = 'Search' onClick={this.submitSearch}>Search</button>
                            <input type = "text" id = "search" className = "SearchBox"/>
                         </div>
                         </NavItem>

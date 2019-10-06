@@ -43,13 +43,13 @@ class CreateContactModal extends Component
    handleCreateContact = () =>
    {
       let requestUrl = SERVER_URL;
-      alert('Line 46' + this.state.authorization);
+      alert('Authorizaiton    ' + this.state.authorization + '   Props   ' + this.props.uid);
 
       this.setState({
          error: ''
       });
-      
-      alert('Line 31' + this.state.authorization);
+
+      // alert('Line 31    ' + this.state.authorization);
 
       fetch(requestUrl,
       {
