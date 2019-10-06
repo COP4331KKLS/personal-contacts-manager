@@ -38,7 +38,6 @@ class ContactList extends Component
                            <Button
                               className = "EditButton"
                            >Edit</Button>
-
                            {firstName}
                         </ListGroupItem>
                      </CSSTransition>

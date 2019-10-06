@@ -11,8 +11,11 @@
 
 .Content {
    margin-top: 5%;
-   margin-left: %;
-   flex-direction: row;
+}
+
+.TableContainer
+{
+   width: 100%;
 }
 
 .SearchBox {

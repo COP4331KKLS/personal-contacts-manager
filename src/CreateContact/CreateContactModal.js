@@ -12,18 +12,17 @@ import
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addContact } from '../actions/itemActions'
-import uuid from 'uuid';
 
-const SERVER_URL = "https://personal-contacts-manager.herokuapp.com/addContact";
+const SERVER_URL = "https://personal-contacts-manager.herokuapp.com/contacts/addContact";
 
 class CreateContactModal extends Component
 {
-   constructor()
+   constructor(props)
    {
-      super();
+      super(props);
       this.state =
       {
-         uid: '',
+         authorization: props.uid,
          firstName: '',
          lastName: '',
          company: '',
@@ -44,30 +43,19 @@ class CreateContactModal extends Component
    handleCreateContact = () =>
    {
       let requestUrl = SERVER_URL;
-
-      const newContact =
-      {
-         uid: this.state.uid,
-         firstName: this.state.firstName,
-         lastName: this.state.lastName,
-         company: this.state.company,
-         phoneNumber: this.state.phoneNumber,
-         email: this.state.email,
-         address: this.state.address
-      };
-
-      this.props.addContact(newContact);
+      alert('Line 46' + this.state.authorization);
 
       this.setState({
-         error: '',
-         uid: ''
+         error: ''
       });
+      
+      alert('Line 31' + this.state.authorization);
 
       fetch(requestUrl,
       {
          method: 'POST',
          headers: {
-            'uid': this.state.uid
+            'authorization': this.state.authorization
          },
          body: {
             'firstName': this.state.firstName,
@@ -77,32 +65,36 @@ class CreateContactModal extends Component
             'email': this.state.email,
             'address': this.state.address
          }
+
       })
       .then(response => response.json())
       .then(responseData =>
       {
          if(responseData.error !== "")
          {
+            console.log(responseData.error);
             this.setState({
                error: responseData.error,
-               uid: ''
+               authorization: ''
             });
-
+            console.log(responseData.error);
             return;
          }
 
          this.setState({
-            uid: responseData.message
+            authorization: responseData.message
          });
+
       })
       .catch( error =>
       {
          this.setState({
             error: `Internal server error. ${error}`,
-            uid: ''
+            authorization: ''
          });
       });
 
+      alert('Line 96' + this.state.authorization);
       this.toggle();
    }
 

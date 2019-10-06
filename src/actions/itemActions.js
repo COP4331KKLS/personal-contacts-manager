@@ -1,4 +1,3 @@
-import uuid from 'uuid';
 import { GET_CONTACTS, ADD_CONTACT, DELETE_CONTACT } from './types';
 
 export const getContacts = () =>
