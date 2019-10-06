@@ -1,3 +1,8 @@
+@font-face {
+  font-family: starwars;
+  src: url(sfdistantgalaxy-0l3d-webfont.woff);
+}
+
 .Signin
 {
   display: flex;
@@ -14,6 +19,8 @@ width: 50%;
 
 .particles
 {
+  background: url("./PIA09959-1280x800_copy.jpg");
+
    position: fixed;
    top: 0;
    right: 0;
@@ -24,6 +31,7 @@ width: 50%;
 
 .AppTitle
 {
+  font-family: starwars;
   text-align: center;
   color: white;
 }
@@ -38,6 +46,7 @@ width: 50%;
 
 .ButtonContainer
 {
+  font-family: starwars;
   margin-top: 10px;
   display: flex;
   color: white;

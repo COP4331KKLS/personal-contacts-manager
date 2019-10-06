@@ -1,18 +1,55 @@
+@font-face {
+  font-family: starwars;
+  src: url(sfdistantgalaxy-0l3d-webfont.woff);
+}
+
+*{
+  font-family: starwars;
+}
+
+.displayResults{
+  color: silver;
+  background-color: blue;
+  /* filter:blur(1px); */
+}
+
+.firstname{
+  text-indent: 5px;
+}
+
+.tableButtons{
+  background-color: gray;
+}
+
+.editButton{
+  color: white;
+  background-color: black;
+}
+
+.editButton:hover{
+  color:blue;
+}
+
+.deleteButton{
+  color: red;
+  background-color: black;
+}
+
 .Home {
-  background: url("./PIA09959-1280x800_copy.jpg");
-  background-size:cover;
+  /* background: url("./PIA09959-1280x800_copy.jpg");
+  background-size:cover; */
 
 }
 
 .particles {
-  /* background: url("./PIA09959-1280x800_copy.jpg"); */
-  background-color: black;
+  background: url("./PIA09959-1280x800_copy.jpg");
+  /* background-color: black; */
   background-size:cover;
-
 }
 
 .LogoutButton
 {
+  font-family: starwars;
   color: white;
 }
 
@@ -28,6 +65,7 @@
 
 .TableContainer
 {
+  color: white;
    width: 100%;
 }
 
@@ -64,4 +102,8 @@
 .fade-exit-active {
   opacity: 0.01;
   transition: opacity 1000ms ease-in;
+}
+
+.TableName{
+  color: white;
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Home from '../Home/Home';
 import Particles from 'react-particles-js';
 import './Signin.css';
-document.body.style = 'background: #483D3F;';
+// document.body.style = 'background: #483D3F;';
 
 const SERVER_URL = "https://personal-contacts-manager.herokuapp.com";
 
@@ -12,11 +12,11 @@ const particlesOptions =
    {
       number:
       {
-         value: 75,
+         value: 250,
          density:
          {
             enable: true,
-            value_area: 800
+            value_area: 1000
          }
       }
    }
