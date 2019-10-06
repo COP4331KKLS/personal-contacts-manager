@@ -107,7 +107,8 @@ class Signin extends Component
          <div className = "Signin">
             <Particles className = "particles" params = {particlesOptions}/>
             <div className = "FormContent">
-               <h1 className = "AppTitle">CONTACTS MANAGER</h1>
+            <h1 className='AppTitle'>HELLO THERE<br></br>(GENERAL KENOBI)</h1>
+            <img src="https://i.kym-cdn.com/photos/images/original/001/475/420/c62.gif" class="centerGif"></img>
 
                <input className = "Field" type = "text" onChange={event => this.setState({username: event.target.value})}></input>
                <input className = "Field" type = "password" onChange={event => this.setState({password: event.target.value})}></input>

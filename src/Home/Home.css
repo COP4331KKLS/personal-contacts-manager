@@ -1,3 +1,16 @@
+.Home {
+  background: url("./PIA09959-1280x800_copy.jpg");
+  background-size:cover;
+
+}
+
+.particles {
+  /* background: url("./PIA09959-1280x800_copy.jpg"); */
+  background-color: black;
+  background-size:cover;
+
+}
+
 .LogoutButton
 {
   color: white;
