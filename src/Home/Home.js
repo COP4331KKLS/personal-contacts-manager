@@ -493,15 +493,27 @@ handleSearchInputChange = (evt) => {
      {
         if(responseData.error !== "")
         {
-           console.log(responseData.error);
+          alert("Entered error if statement " + responseData.error + " !");
+          alert("Entered error if statement " );
+
            this.setState({
               error: responseData.error,
-              authorization: ''
+              authorization: '',
+              contacts: [{
+                  uid: '',
+                  firstName: 'Kyle',
+                  lastName: 'Rits',
+                  company: 'Blah',
+                  phoneNumber: '808-990-5604',
+                  email: 'KyleRits@Knights.ucf.edu',
+                  address: '3721 Pyrite Drive',
+                  cid: '1'
+              }]
            });
-           console.log(responseData.error);
            return;
         }
 
+        alert("Search results: " + responseData.message);
         this.setState({
            contacts: responseData.message
         });
@@ -518,6 +530,8 @@ handleSearchInputChange = (evt) => {
      alert("The search is for: " + requestUrl);
      this.setState({doRender: true});
    }
+//////////////////// END OF SEARCHSUBMIT ///////////////////////////////////////////////////////////////////////////////////////////
+
 
    submitEditContact= (e) =>{
      // alert(`${this.state.editPreFillFirstName}`);
@@ -557,56 +571,56 @@ handleSearchInputChange = (evt) => {
 
      //JSON EDIT REQUEST
 
-     //
-     // let requestUrl = "https://personal-contacts-manager.herokuapp.com/contacts/editContact";
-     //
-     // this.setState({
-     //    error: '',
-     //    authorization: ''
-     // });
-     //
-     // fetch(requestUrl,
-     // {
-     //    method: 'POST',
-     //    headers: {
-     //       'authorization': this.props.uid
-     //    },
-     //    body: {
-     //      "firstName": this.state.editFirstName,
-     //      "lastName" : newArray[indexDelete].lastName,
-     //      "company" : newArray[indexDelete].company,
-     //      "phoneNumber" : newArray[indexDelete].phoneNumber,
-     //      "email": newArray[indexDelete].email,
-     //      "address": newArray[indexDelete].address
-     //    }
-     //
-     // })
-     // .then(response => response.json())
-     // .then(responseData =>
-     // {
-     //    if(responseData.error !== "")
-     //    {
-     //       console.log(responseData.error);
-     //       this.setState({
-     //          error: responseData.error,
-     //          authorization: ''
-     //       });
-     //       console.log(responseData.error);
-     //       return;
-     //    }
-     //
-     //    this.setState({
-     //       authorization: responseData.message
-     //    });
-     //
-     // })
-     // .catch( error =>
-     // {
-     //    this.setState({
-     //       error: `Internal server error. ${error}`,
-     //       authorization: ''
-     //    });
-     // });
+
+     let requestUrl = "https://personal-contacts-manager.herokuapp.com/contacts/editContact";
+
+     this.setState({
+        error: '',
+        authorization: ''
+     });
+
+     fetch(requestUrl,
+     {
+        method: 'POST',
+        headers: {
+           'authorization': this.props.uid
+        },
+        body: {
+          "firstName": this.state.editFirstName,
+          "lastName" : newArray[indexEdit].lastName,
+          "company" : newArray[indexEdit].company,
+          "phoneNumber" : newArray[indexEdit].phoneNumber,
+          "email": newArray[indexEdit].email,
+          "address": newArray[indexEdit].address
+        }
+
+     })
+     .then(response => response.json())
+     .then(responseData =>
+     {
+        if(responseData.error !== "")
+        {
+           console.log(responseData.error);
+           this.setState({
+              error: responseData.error,
+              authorization: ''
+           });
+           console.log(responseData.error);
+           return;
+        }
+
+        this.setState({
+           authorization: responseData.message
+        });
+
+     })
+     .catch( error =>
+     {
+        this.setState({
+           error: `Internal server error. ${error}`,
+           authorization: ''
+        });
+     });
 
 
 

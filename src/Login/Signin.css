@@ -33,12 +33,14 @@ width: 50%;
 {
   font-family: starwars;
   text-align: center;
+  font-size: 7em;
   color: white;
 }
 
 .FormContent
 {
-  margin-top: 12.5%;
+  /* margin-top: 12.5%; */
+  margin-top: 5%;
   width: 40%;
   display: flex;
   flex-direction: column;
