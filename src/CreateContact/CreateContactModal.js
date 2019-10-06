@@ -46,16 +46,17 @@ class CreateContactModal extends Component
       alert('Line 46' + this.state.authorization);
 
       this.setState({
-         error: ''
+         error: '',
+         authorization: ''
       });
-      
+
       alert('Line 31' + this.state.authorization);
 
       fetch(requestUrl,
       {
          method: 'POST',
          headers: {
-            'authorization': this.state.authorization
+            'authorization': this.props.uid
          },
          body: {
             'firstName': this.state.firstName,
@@ -94,7 +95,6 @@ class CreateContactModal extends Component
          });
       });
 
-      alert('Line 96' + this.state.authorization);
       this.toggle();
    }
 
