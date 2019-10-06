@@ -72,6 +72,7 @@ class Home extends Component
          uid: props.uid,
          editModal: false,
          isNavbarOpen: false,
+         searchInput: "",
      contactHeader:
      {
 
@@ -251,6 +252,10 @@ handleAddressChange = (evt) => {
   this.setState({editPreFillAddress: evt.target.value});
 }
 
+handleSearchInputChange = (evt) => {
+  this.setState({searchInput: evt.target.value});
+}
+
 
    renderTableData() {
     return this.state.contacts.map((contact, index) => {
@@ -391,9 +396,10 @@ handleAddressChange = (evt) => {
      console.log(this.state.contacts.length);
      for(var i=0; i<newArray.length; i++)
      {
-       if(newArray[i].CID===e.target.value)
+       if(newArray[i].cid===e.target.value)
        {
          indexDelete = i;
+         break;
        }
      }
      console.log(indexDelete);
@@ -465,6 +471,51 @@ handleAddressChange = (evt) => {
    }
 
    submitSearch = (e) => {
+
+     // const SERVER_URL = "https://personal-contacts-manager.herokuapp.com/contacts/searchContact";
+
+     let requestUrl = "https://personal-contacts-manager.herokuapp.com/contacts/searchContact/?searchstring=" + this.state.searchInput;
+
+     this.setState({
+        error: '',
+        authorization: ''
+     });
+
+     fetch(requestUrl,
+     {
+        method: 'GET',
+        headers: {
+           'authorization': this.props.uid
+        }
+     })
+     .then(response => response.json())
+     .then(responseData =>
+     {
+        if(responseData.error !== "")
+        {
+           console.log(responseData.error);
+           this.setState({
+              error: responseData.error,
+              authorization: ''
+           });
+           console.log(responseData.error);
+           return;
+        }
+
+        this.setState({
+           contacts: responseData.message
+        });
+
+     })
+     .catch( error =>
+     {
+        this.setState({
+           error: `Internal server error. ${error}`,
+           authorization: ''
+        });
+     });
+
+     alert("The search is for: " + requestUrl);
      this.setState({doRender: true});
    }
 
@@ -478,6 +529,7 @@ handleAddressChange = (evt) => {
        if(newArray[i].cid===this.state.editPreFillContactID)
        {
          indexEdit = i;
+         break;
        }
      }
      //
@@ -593,7 +645,8 @@ handleAddressChange = (evt) => {
                         <NavItem >
                         <div className = "SearchContainer">
                            <button className = "SearchButton" value = 'Search' onClick={this.submitSearch}>Search</button>
-                           <input type = "text" id = "search" className = "SearchBox"/>
+                           <input type = "text" id = "search" className = "SearchBox" onChange={this.handleSearchInputChange}
+                           value={this.state.searchInput}/>
                         </div>
                         </NavItem>
 
