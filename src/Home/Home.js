@@ -478,8 +478,9 @@ handleSearchInputChange = (evt) => {
 
      this.setState({
         error: '',
-        authorization: ''
      });
+
+     alert(this.state.uid)
 
      fetch(requestUrl,
      {
@@ -498,7 +499,6 @@ handleSearchInputChange = (evt) => {
 
            this.setState({
               error: responseData.error,
-              authorization: '',
               contacts: [{
                   uid: '',
                   firstName: 'Kyle',
