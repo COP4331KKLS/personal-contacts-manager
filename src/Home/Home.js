@@ -250,7 +250,7 @@ handleAddressChange = (evt) => {
                            style = {{marginTop: '2rem'}}
                            onClick = {() => this.submitEditContact()}
                            block
-                        >Add Contact</Button>
+                        >Submit Edit</Button>
                      </FormGroup>
                   </Form>
                </ModalBody>
@@ -296,9 +296,10 @@ handleAddressChange = (evt) => {
   this.toggleEditModal();
 }
 
+
+
    deleteContact= (e) =>{
      var indexDelete = -1//this.getIndex(newArray);
-     console.log("Delete Contact");
      var newArray = this.state.contacts.slice();
      console.log(this.state.contacts.length);
      for(var i=0; i<newArray.length; i++)
@@ -310,28 +311,83 @@ handleAddressChange = (evt) => {
      }
      console.log(indexDelete);
      if(indexDelete !== -1){
+
+       let requestUrl = "https://personal-contacts-manager.herokuapp.com/contacts/deleteContact";
+
+       this.setState({
+          error: '',
+          authorization: ''
+       });
+
+       fetch(requestUrl,
+       {
+          method: 'POST',
+          headers: {
+             'authorization': this.props.uid
+          },
+          body: {
+            "firstName": newArray[indexDelete].firstName,
+            "lastName" : newArray[indexDelete].lastName,
+            "company" : newArray[indexDelete].company,
+            "phoneNumber" : newArray[indexDelete].phoneNumber,
+            "email": newArray[indexDelete].email,
+            "address": newArray[indexDelete].address
+          }
+
+       })
+       .then(response => response.json())
+       .then(responseData =>
+       {
+          if(responseData.error !== "")
+          {
+             console.log(responseData.error);
+             this.setState({
+                error: responseData.error,
+                authorization: ''
+             });
+             console.log(responseData.error);
+             return;
+          }
+
+          this.setState({
+             authorization: responseData.message
+          });
+
+       })
+       .catch( error =>
+       {
+          this.setState({
+             error: `Internal server error. ${error}`,
+             authorization: ''
+          });
+       });
+
+
+
        newArray.splice(indexDelete,1);
        this.setState({contacts: newArray});
      }
      console.log(e.target.value);
      console.log(e.target.index);
      //Call delete request
+
+
+
+
+
    }
 
    submitSearch = (e) => {
      this.setState({doRender: true});
-     alert('Line 287    ' + this.state.uid);
    }
 
    submitEditContact= (e) =>{
      // alert(`${this.state.editPreFillFirstName}`);
      var indexEdit = -1;
      var newArray = this.state.contacts.slice();
-          alert("Edit Contact ID " + this.state.editPreFillContactID);
      //Send JSON of form for update
      for(var i=0; i<newArray.length; i++)
      {
-       alert("Array " + i + " CID " + newArray[i].cid);
        if(newArray[i].cid===this.state.editPreFillContactID)
        {
          indexEdit = i;
@@ -361,6 +417,59 @@ handleAddressChange = (evt) => {
 
 
      //JSON EDIT REQUEST
+
+     //
+     // let requestUrl = "https://personal-contacts-manager.herokuapp.com/contacts/editContact";
+     //
+     // this.setState({
+     //    error: '',
+     //    authorization: ''
+     // });
+     //
+     // fetch(requestUrl,
+     // {
+     //    method: 'POST',
+     //    headers: {
+     //       'authorization': this.props.uid
+     //    },
+     //    body: {
+     //      "firstName": this.state.editFirstName,
+     //      "lastName" : newArray[indexDelete].lastName,
+     //      "company" : newArray[indexDelete].company,
+     //      "phoneNumber" : newArray[indexDelete].phoneNumber,
+     //      "email": newArray[indexDelete].email,
+     //      "address": newArray[indexDelete].address
+     //    }
+     //
+     // })
+     // .then(response => response.json())
+     // .then(responseData =>
+     // {
+     //    if(responseData.error !== "")
+     //    {
+     //       console.log(responseData.error);
+     //       this.setState({
+     //          error: responseData.error,
+     //          authorization: ''
+     //       });
+     //       console.log(responseData.error);
+     //       return;
+     //    }
+     //
+     //    this.setState({
+     //       authorization: responseData.message
+     //    });
+     //
+     // })
+     // .catch( error =>
+     // {
+     //    this.setState({
+     //       error: `Internal server error. ${error}`,
+     //       authorization: ''
+     //    });
+     // });
+
+
 
    } else {
      alert("Error Editing Contact");

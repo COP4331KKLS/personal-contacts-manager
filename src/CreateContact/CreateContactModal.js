@@ -46,16 +46,15 @@ class CreateContactModal extends Component
       alert('Authorizaiton    ' + this.state.authorization + '   Props   ' + this.props.uid);
 
       this.setState({
-         error: ''
+         error: '',
+         authorization: ''
       });
-
-      // alert('Line 31    ' + this.state.authorization);
 
       fetch(requestUrl,
       {
          method: 'POST',
          headers: {
-            'authorization': this.state.authorization
+            'authorization': this.props.uid
          },
          body: {
             'firstName': this.state.firstName,
@@ -94,7 +93,6 @@ class CreateContactModal extends Component
          });
       });
 
-      alert('Line 96' + this.state.authorization);
       this.toggle();
    }
 
@@ -166,7 +164,7 @@ class CreateContactModal extends Component
                            style = {{marginTop: '2rem'}}
                            onClick = {() => this.handleCreateContact()}
                            block
-                        >Add Contact</Button>
+                        >Create Contact</Button>
                      </FormGroup>
                   </Form>
                </ModalBody>
