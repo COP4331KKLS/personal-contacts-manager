@@ -7,6 +7,10 @@
   font-family: starwars;
 }
 
+.NavBarSettings{
+  /* justify-content: space-evenly; */
+}
+
 .displayResults{
   color: silver;
   background-color: blue;
@@ -20,6 +24,19 @@
 .tableButtons{
   background-color: gray;
 }
+
+.displayResults:nth-child(2n+1){
+  background-color: green;
+}
+.displayResults:nth-child(2n){
+  background-color: blue;
+}
+
+.displayResults:nth-child(3n){
+  background-color: red;
+}
+
+
 
 .editButton{
   color: white;
@@ -49,6 +66,7 @@
 
 .LogoutButton
 {
+  margin-top: 8%;
   font-family: starwars;
   color: white;
 }
@@ -69,13 +87,26 @@
    width: 100%;
 }
 
+/* .leftNav{
+  align:left;
+} */
+.SearchContainer {
+margin-left: 40%;
+width:250%;
+}
+/* .rightNav{
+text-align: right;
+} */
+
 .SearchBox {
    width: 55%;
 }
 
 .SearchButton {
-   margin-right: 0.5%;
+   /* margin-right: 0.5%; */
+
    color: white;
+   background-color: black;
 }
 
 .RemoveButton {

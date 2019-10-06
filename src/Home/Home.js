@@ -75,10 +75,10 @@ class Home extends Component
      contactHeader:
      {
 
-       firstName: '',
-       lastName: '',
+       "First Name": '',
+       "Last Name": '',
        company: '',
-       phoneNumber: '',
+       "Phone Number": '',
        email: '',
        address: '',
        cid: '',
@@ -86,6 +86,93 @@ class Home extends Component
      },
         contacts: [
                      {
+                         uid: '',
+                         firstName: 'Kyle',
+                         lastName: 'Rits',
+                         company: 'Blah',
+                         phoneNumber: '808-990-5604',
+                         email: 'KyleRits@Knights.ucf.edu',
+                         address: '3721 Pyrite Drive',
+                         cid: '1'
+                     },
+                     {
+                       uid: '',
+                       firstName: 'KEvin',
+                       lastName: 'Rits',
+                       company: '',
+                       phoneNumber: '808-990-5604',
+                       email: 'KyleRits@Knights.ucf.edu',
+                       address: '3721 Pyrite Drive',
+                       cid: '2'
+                     },
+                     {
+                       uid: '',
+                       firstName: 'Stefan',
+                       lastName: 'Rits',
+                       company: '',
+                       phoneNumber: '808-990-5604',
+                       email: 'KyleRits@Knights.ucf.edu',
+                       address: '3721 Pyrite Drive',
+                       cid: '3'
+                     },{
+                         uid: '',
+                         firstName: 'Kyle',
+                         lastName: 'Rits',
+                         company: 'Blah',
+                         phoneNumber: '808-990-5604',
+                         email: 'KyleRits@Knights.ucf.edu',
+                         address: '3721 Pyrite Drive',
+                         cid: '1'
+                     },
+                     {
+                       uid: '',
+                       firstName: 'KEvin',
+                       lastName: 'Rits',
+                       company: '',
+                       phoneNumber: '808-990-5604',
+                       email: 'KyleRits@Knights.ucf.edu',
+                       address: '3721 Pyrite Drive',
+                       cid: '2'
+                     },
+                     {
+                       uid: '',
+                       firstName: 'Stefan',
+                       lastName: 'Rits',
+                       company: '',
+                       phoneNumber: '808-990-5604',
+                       email: 'KyleRits@Knights.ucf.edu',
+                       address: '3721 Pyrite Drive',
+                       cid: '3'
+                     },{
+                         uid: '',
+                         firstName: 'Kyle',
+                         lastName: 'Rits',
+                         company: 'Blah',
+                         phoneNumber: '808-990-5604',
+                         email: 'KyleRits@Knights.ucf.edu',
+                         address: '3721 Pyrite Drive',
+                         cid: '1'
+                     },
+                     {
+                       uid: '',
+                       firstName: 'KEvin',
+                       lastName: 'Rits',
+                       company: '',
+                       phoneNumber: '808-990-5604',
+                       email: 'KyleRits@Knights.ucf.edu',
+                       address: '3721 Pyrite Drive',
+                       cid: '2'
+                     },
+                     {
+                       uid: '',
+                       firstName: 'Stefan',
+                       lastName: 'Rits',
+                       company: '',
+                       phoneNumber: '808-990-5604',
+                       email: 'KyleRits@Knights.ucf.edu',
+                       address: '3721 Pyrite Drive',
+                       cid: '3'
+                     },{
                          uid: '',
                          firstName: 'Kyle',
                          lastName: 'Rits',
@@ -503,7 +590,7 @@ handleAddressChange = (evt) => {
                      <NavbarBrand href = "/">Contact Manager</NavbarBrand>
                      <NavbarToggler onClick = {this.toggleNavbar}/>
                      <Collapse isOpen = {this.state.isNavbarOpen} navbar>
-                        <NavItem className = "ml-auto">
+                        <NavItem >
                         <div className = "SearchContainer">
                            <button className = "SearchButton" value = 'Search' onClick={this.submitSearch}>Search</button>
                            <input type = "text" id = "search" className = "SearchBox"/>
