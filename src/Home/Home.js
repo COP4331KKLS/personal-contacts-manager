@@ -224,19 +224,19 @@ class Home extends Component
 
    }
 
-contactConverter = () => {
+contactConverter = (responseData) => {
   let tempArray = [];
   let i = 0;
-  for (i=0; i<this.tempContacts.length; i++)
+  for (i=0; i<responseData.length; i++)
   {
     tempArray.push({
       uid: this.props.uid,
-      firstName: this.tempContacts[i].firstName,
-      lastName: this.tempContacts[i].lastName,
-      company: this.tempContacts[i].company,
-      phoneNumber: this.tempContacts[i].phoneNumber,
-      email: this.tempContacts[i].email,
-      address: this.tempContacts[i].addres,
+      firstName: responseData[i].contacts.firstName,
+      lastName: responseData[i].contacts.lastName,
+      company: responseData[i].contacts.company,
+      phoneNumber: responseData[i].contacts.phoneNumber,
+      email: responseData[i].contacts.email,
+      address: responseData[i].contacts.address,
       cid: i
     });
   }
@@ -514,10 +514,10 @@ handleSearchInputChange = (evt) => {
      {
 
         alert("Search results: " + responseData);
-        this.setState({
-           tempContacts: responseData
-        });
-        this.contactConverter();
+        // this.setState({
+        //    tempContacts: responseData
+        // });
+        this.contactConverter(responseData);
 
      })
      .catch( error =>
