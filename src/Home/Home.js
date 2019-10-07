@@ -86,57 +86,7 @@ class Home extends Component
 
      },
      tempContacts: [],
-        contacts: [
-                     {
-                         uid: '',
-                         firstName: 'Kyle',
-                         lastName: 'Rits',
-                         company: 'Blah',
-                         phoneNumber: '808-990-5604',
-                         email: 'KyleRits@Knights.ucf.edu',
-                         address: '3721 Pyrite Drive',
-                         cid: '0'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'KEvin',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '1'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'Stefan',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '2'
-                     },{
-                         uid: '',
-                         firstName: 'Kyle',
-                         lastName: 'Rits',
-                         company: 'Blah',
-                         phoneNumber: '808-990-5604',
-                         email: 'KyleRits@Knights.ucf.edu',
-                         address: '3721 Pyrite Drive',
-                         cid: '3'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'KEvin',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '4'
-                     }
-                 ],
+        contacts: [],
         doRender: false,
         editPreFillFirstName: "new",
         editPreFillLastName: "",
@@ -148,7 +98,7 @@ class Home extends Component
         editFirstName: "",
         editLastName: "",
         editCompany : "",
-        editPhone: "",
+        editPhoneNumber: "",
         editEmail: "",
         editAddress: "",
         editContactID: ""
@@ -193,7 +143,7 @@ handleCompanyChange = (evt) => {
 }
 
 handlePhoneChange = (evt) => {
-  this.setState({editPreFillPhone: evt.target.value});
+  this.setState({editPreFillPhoneNumber: evt.target.value});
 }
 
 handleEmailChange = (evt) => {
@@ -274,7 +224,7 @@ handleSearchInputChange = (evt) => {
                            name = "phoneNumber"
                            id = "contact"
                            onChange={this.handlePhoneChange}
-                           value={this.state.editPreFillPhone}
+                           value={this.state.editPreFillPhoneNumber}
                         />
 
                         <Label for = "contact">Email</Label>
@@ -410,8 +360,7 @@ handleSearchInputChange = (evt) => {
      .catch( error =>
      {
         this.setState({
-           error: `Internal server error. ${error}`,
-           authorization: ''
+           error: `Internal server error. ${error}`
         });
      });
      this.setState({doRender: true});
@@ -436,14 +385,14 @@ handleSearchInputChange = (evt) => {
   this.setState({editPreFillFirstName: newArray[indexEdit].firstName});
   this.setState({editPreFillLastName: newArray[indexEdit].lastName});
   this.setState({editPreFillCompany : newArray[indexEdit].company});
-  this.setState({editPreFillPhone: newArray[indexEdit].phoneNumber});
+  this.setState({editPreFillPhoneNumber: newArray[indexEdit].phoneNumber});
   this.setState({editPreFillEmail: newArray[indexEdit].email});
   this.setState({editPreFillAddress: newArray[indexEdit].address});
 
   this.setState({editFirstName: newArray[indexEdit].firstName});
   this.setState({editLastName: newArray[indexEdit].lastName});
   this.setState({editCompany : newArray[indexEdit].company});
-  this.setState({editPhone: newArray[indexEdit].phoneNumber});
+  this.setState({editPhoneNumber: newArray[indexEdit].phoneNumber});
   this.setState({editEmail: newArray[indexEdit].email});
   this.setState({editAddress: newArray[indexEdit].address});
   this.setState({editPreFillContactID: el.target.value});
@@ -478,7 +427,7 @@ handleSearchInputChange = (evt) => {
        firstName: this.state.editPreFillFirstName,
        lastName : this.state.editPreFillLastName,
        company : this.state.editPreFillCompany,
-       phoneNumber : this.state.editPreFillPhone,
+       phoneNumber : this.state.editPreFillPhoneNumber,
        email: this.state.editPreFillEmail,
        address: this.state.editPreFillAddress,
        cid: this.state.editPreFillContactID
@@ -549,7 +498,6 @@ handleSearchInputChange = (evt) => {
 
 
    } else {
-     alert("Error Editing Contact");
      // event.preventDefault();
    }
 
