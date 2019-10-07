@@ -36,6 +36,14 @@ class CreateContactModal extends Component
       this.setState({
          modal: !this.state.modal
       });
+      this.setState({
+         firstName: '',
+         lastName: '',
+         company: '',
+         phoneNumber: '',
+         email: '',
+         address: ''
+      })
    };
 
    handleCreateContact = () =>

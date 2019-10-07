@@ -174,7 +174,7 @@ handleSearchInputChange = (evt) => {
              email={email}
              address={address}
              onClick={this.editContact}>Edit</button></td>
-             <td class="tableButtons"><button value={cid} fName={First_Name} class="deleteButton button" onClick={this.deleteContact}>Delete</button></td>
+             <td class="tableButtons"><button value={cid} fName={First_Name} class="deleteButton button" onClick={this.deleteContact}>Order 66</button></td>
 
              <Modal isOpen = {this.state.editModal} toggle = {this.toggleEditModal}>
                <ModalHeader toggle = {this.toggleEditModal}>Edit Contact</ModalHeader>
@@ -417,7 +417,7 @@ handleSearchInputChange = (evt) => {
        firstName: this.state.editPreFillFirstName,
        lastName : this.state.editPreFillLastName,
        company : this.state.editPreFillCompany,
-       phoneNumber : this.state.editPreFillPhone,
+       phoneNumber : this.state.editPreFillPhoneNumber,
        email: this.state.editPreFillEmail,
        address: this.state.editPreFillAddress,
        cid: this.state.editPreFillContactID
