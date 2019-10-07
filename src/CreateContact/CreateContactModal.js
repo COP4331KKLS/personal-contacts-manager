@@ -69,12 +69,10 @@ class CreateContactModal extends Component
       {
          if(responseData.error !== "")
          {
-            console.log(responseData.error);
             this.setState({
                error: responseData.error,
                authorization: ''
             });
-            console.log(responseData.error);
             return;
          }
 
@@ -90,6 +88,8 @@ class CreateContactModal extends Component
             authorization: ''
          });
       });
+
+      console.log(this.state);
 
       this.toggle();
    }

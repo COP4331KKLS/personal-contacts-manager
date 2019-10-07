@@ -86,129 +86,7 @@ class Home extends Component
 
      },
      tempContacts: [],
-<<<<<<< HEAD
-        contacts: [
-                     {
-                         uid: '',
-                         firstName: 'Kyle',
-                         lastName: 'Rits',
-                         company: 'Blah',
-                         phoneNumber: '808-990-5604',
-                         email: 'KyleRits@Knights.ucf.edu',
-                         address: '3721 Pyrite Drive',
-                         cid: '1'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'KEvin',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '2'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'Stefan',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '3'
-                     },{
-                         uid: '',
-                         firstName: 'Kyle',
-                         lastName: 'Rits',
-                         company: 'Blah',
-                         phoneNumber: '808-990-5604',
-                         email: 'KyleRits@Knights.ucf.edu',
-                         address: '3721 Pyrite Drive',
-                         cid: '1'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'KEvin',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '2'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'Stefan',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '3'
-                     },{
-                         uid: '',
-                         firstName: 'Kyle',
-                         lastName: 'Rits',
-                         company: 'Blah',
-                         phoneNumber: '808-990-5604',
-                         email: 'KyleRits@Knights.ucf.edu',
-                         address: '3721 Pyrite Drive',
-                         cid: '1'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'KEvin',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '2'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'Stefan',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '3'
-                     },{
-                         uid: '',
-                         firstName: 'Kyle',
-                         lastName: 'Rits',
-                         company: 'Blah',
-                         phoneNumber: '808-990-5604',
-                         email: 'KyleRits@Knights.ucf.edu',
-                         address: '3721 Pyrite Drive',
-                         cid: '1'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'KEvin',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '2'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'Stefan',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '3'
-                     }
-                 ],
-=======
         contacts: [],
->>>>>>> e9736818b31c14903bf5d0bff39979e2eaac8141
         doRender: false,
         editPreFillFirstName: "new",
         editPreFillLastName: "",
@@ -300,11 +178,7 @@ handleSearchInputChange = (evt) => {
              email={email}
              address={address}
              onClick={this.editContact}>Edit</button></td>
-<<<<<<< HEAD
-             <td class="tableButtons"><button value={cid} class="deleteButton button" onClick={this.deleteContact}>Delete</button></td>
-=======
              <td class="tableButtons"><button value={cid} fName={First_Name} class="deleteButton button" onClick={this.deleteContact}>Delete</button></td>
->>>>>>> e9736818b31c14903bf5d0bff39979e2eaac8141
 
              <Modal isOpen = {this.state.editModal} toggle = {this.toggleEditModal}>
                <ModalHeader toggle = {this.toggleEditModal}>Edit Contact</ModalHeader>
@@ -380,40 +254,10 @@ handleSearchInputChange = (evt) => {
     })
  }
 
-  editContact = (el) =>{
-     var indexEdit = -1;
-     var newArray = this.state.contacts.slice();
-     //Send JSON of form for update
-     for(var i=0; i<newArray.length; i++)
-     {
-       if(String(newArray[i].cid)===String(el.target.value))
-       {
-         indexEdit = i;
-         break;
-       }
-     }
-
-  this.setState({editPreFillFirstName: newArray[indexEdit].firstName});
-  this.setState({editPreFillLastName: newArray[indexEdit].lastName});
-  this.setState({editPreFillCompany : newArray[indexEdit].company});
-  this.setState({editPreFillPhoneNumber: newArray[indexEdit].phoneNumber});
-  this.setState({editPreFillEmail: newArray[indexEdit].email});
-  this.setState({editPreFillAddress: newArray[indexEdit].address});
-
-  this.setState({editFirstName: newArray[indexEdit].firstName});
-  this.setState({editLastName: newArray[indexEdit].lastName});
-  this.setState({editCompany : newArray[indexEdit].company});
-  this.setState({editPhoneNumber: newArray[indexEdit].phoneNumber});
-  this.setState({editEmail: newArray[indexEdit].email});
-  this.setState({editAddress: newArray[indexEdit].address});
-  this.setState({editPreFillContactID: el.target.value});
-  this.toggleEditModal();
-}
 
    deleteContact= (e) =>{
-     var indexDelete = -1 //this.getIndex(newArray);
+     var indexDelete = -1//this.getIndex(newArray);
      var newArray = this.state.contacts.slice();
-     console.log('newArray length: ' + newArray.length);
      // console.log(this.state.contacts.length);
      for(var i=0; i<newArray.length; i++)
      {
@@ -432,7 +276,7 @@ handleSearchInputChange = (evt) => {
           error: ''
        });
 
-       fetch('https://personal-contacts-manager.herokuapp.com/contacts/deleteContact',
+       fetch(requestUrl,
          {
             method: 'DELETE',
             headers: {
@@ -472,7 +316,7 @@ handleSearchInputChange = (evt) => {
        .catch( error =>
        {
           this.setState({
-             error: 'Internal server error. ${error}',
+             error: `Internal server error. ${error}`,
              authorization: ''
           });
        });
@@ -490,10 +334,7 @@ handleSearchInputChange = (evt) => {
      this.setState({
         error: '',
      });
-
-     alert(this.state.uid)
-
-     fetch('https://personal-contacts-manager.herokuapp.com/contacts/searchContact/?searchstring=' + this.state.searchInput,
+     fetch(requestUrl,
      {
         method: 'GET',
         headers: {
@@ -503,8 +344,6 @@ handleSearchInputChange = (evt) => {
      .then(response => response.json())
      .then(responseData =>
      {
-
-        alert("Search results: " + responseData);
         console.log(responseData);
         // this.setState({
         //    tempContacts: responseData
@@ -518,14 +357,10 @@ handleSearchInputChange = (evt) => {
            error: `Internal server error. ${error}`
         });
      });
-
-     alert("The search is for: " + requestUrl);
      this.setState({doRender: true});
    }
 //////////////////// END OF SEARCHSUBMIT ///////////////////////////////////////////////////////////////////////////////////////////
 
-<<<<<<< HEAD
-=======
 
 
    editContact = (el) =>{
@@ -560,7 +395,6 @@ handleSearchInputChange = (evt) => {
 
 
 
->>>>>>> e9736818b31c14903bf5d0bff39979e2eaac8141
    submitEditContact= (e) =>{
      // alert(`${this.state.editPreFillFirstName}`);
      var indexEdit = -1;
@@ -587,7 +421,7 @@ handleSearchInputChange = (evt) => {
        firstName: this.state.editPreFillFirstName,
        lastName : this.state.editPreFillLastName,
        company : this.state.editPreFillCompany,
-       phoneNumber : this.state.editPreFillPhoneNumber,
+       phoneNumber : this.state.editPreFillPhone,
        email: this.state.editPreFillEmail,
        address: this.state.editPreFillAddress,
        cid: this.state.editPreFillContactID
@@ -604,8 +438,7 @@ handleSearchInputChange = (evt) => {
         error: ''
      });
 
-		console.log(this.state.editPreFillPhoneNumber);
-     fetch('https://personal-contacts-manager.herokuapp.com/contacts/editContact',
+     fetch(requestUrl,
        {
           method: 'POST',
           headers: {
@@ -666,11 +499,6 @@ handleSearchInputChange = (evt) => {
    // this.setState({showContactOpen: false});
    this.toggleEditModal();
    }
-
-
-
-
-
 
    renderTableHeader() {
      // alert(`${this.state.contacts.length}`)
