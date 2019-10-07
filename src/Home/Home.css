@@ -16,6 +16,11 @@
   letter-spacing: 0.1em;
 }
 
+.Droids
+{
+   width: 70%;
+}
+
 .displayResults{
   color: silver;
   background-color: blue;

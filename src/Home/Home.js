@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import CreateContactModal from '../CreateContact/CreateContactModal';
-import EditContactModal from '../EditContact/EditContactModal';
-import ContactList from '../ContactList/ContactList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Home.css';
 import Particles from 'react-particles-js';
+import droids from './Droids.gif';
 
 import
 {
@@ -27,9 +26,6 @@ import {
    NavItem,
    Container
 } from 'reactstrap';
-
-import { Provider } from 'react-redux';
-import store from '../store';
 
 const particlesOptions =
 {
@@ -511,16 +507,19 @@ handleSearchInputChange = (evt) => {
       })
     }
 
-    return <h1 className="EmptyResults">These aren't the droids you're looking for</h1>
+    return (
+      <div>
+         <h1 className="EmptyResults">These aren't the droids you're looking for</h1>
+         <img className = "Droids" src = {droids} alt = "droids"/>
+      </div>
+     );
    }
 
    render()
    {
       return (
-         <Provider store = {store}>
-            <Particles className = "particles" params = {particlesOptions}/>
-
             <div className = "Home">
+               <Particles className = "particles" params = {particlesOptions}/>
                <Navbar color = "dark" dark expand = "sm">
                   <Container>
                      <NavbarBrand href = "/">Contact Manager</NavbarBrand>
@@ -556,9 +555,7 @@ handleSearchInputChange = (evt) => {
                      </table>
                   </div>
                </Container>
-
             </div>
-         </Provider>
       );
    }
 }

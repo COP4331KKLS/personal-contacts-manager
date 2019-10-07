@@ -10,8 +10,6 @@ import
    Label,
    Input
 } from 'reactstrap';
-import { connect } from 'react-redux';
-import { addContact } from '../actions/itemActions'
 
 const SERVER_URL = "https://personal-contacts-manager.herokuapp.com/contacts/addContact";
 
@@ -172,11 +170,4 @@ class CreateContactModal extends Component
    }
 }
 
-const mapStateToProps = (state) => ({
-   contact: state.contact
-});
-
-export default connect(
-   mapStateToProps,
-   { addContact }
-)(CreateContactModal);
+export default CreateContactModal;
