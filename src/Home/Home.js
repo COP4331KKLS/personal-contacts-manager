@@ -441,7 +441,7 @@ handleSearchInputChange = (evt) => {
         // this.setState({
         //    tempContacts: responseData
         // });
-        //this.contactConverter(responseData);
+        this.contactConverter(responseData);
 
      })
      .catch( error =>
