@@ -85,6 +85,7 @@ class Home extends Component
        cid: '',
 
      },
+     tempContacts: [],
         contacts: [
                      {
                          uid: '',
@@ -222,6 +223,25 @@ class Home extends Component
                }
 
    }
+
+contactConverter = () => {
+  let tempArray = [];
+  let i = 0;
+  for (i=0; i<this.tempContacts.length; i++)
+  {
+    tempArray.push({
+      uid: this.props.uid,
+      firstName: this.tempContacts[i].firstName,
+      lastName: this.tempContacts[i].lastName,
+      company: this.tempContacts[i].company,
+      phoneNumber: this.tempContacts[i].phoneNumber,
+      email: this.tempContacts[i].email,
+      address: this.tempContacts[i].addres,
+      cid: i
+    });
+  }
+  this.setState({contacts: tempArray});
+}
 
 handleFirstNameChange = (evt) => {
   // const test = evt.target.value;
@@ -492,30 +512,10 @@ handleSearchInputChange = (evt) => {
      .then(response => response.json())
      .then(responseData =>
      {
-        if(responseData.error !== "")
-        {
-          alert("Entered error if statement " + responseData.error + " !");
-          alert("Entered error if statement " );
 
-           this.setState({
-              error: responseData.error,
-              contacts: [{
-                  uid: '',
-                  firstName: 'Kyle',
-                  lastName: 'Rits',
-                  company: 'Blah',
-                  phoneNumber: '808-990-5604',
-                  email: 'KyleRits@Knights.ucf.edu',
-                  address: '3721 Pyrite Drive',
-                  cid: '1'
-              }]
-           });
-           return;
-        }
-
-        alert("Search results: " + responseData.message);
+        alert("Search results: " + responseData);
         this.setState({
-           contacts: responseData.message
+           tempContacts: responseData
         });
 
      })
