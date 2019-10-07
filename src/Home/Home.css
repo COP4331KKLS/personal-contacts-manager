@@ -16,14 +16,10 @@
   letter-spacing: 0.1em;
 }
 
-.Droids
-{
-   width: 70%;
-}
-
 .displayResults{
-  color: silver;
+  color: white;
   background-color: blue;
+  font-size: 1.2em;
   /* filter:blur(1px); */
 }
 
@@ -39,11 +35,11 @@
   background-color: green;
 }
 .displayResults:nth-child(2n){
-  background-color: blue;
+  background-color: #191970;
 }
 
 .displayResults:nth-child(3n){
-  background-color: red;
+  background-color: #75000a;
 }
 
 

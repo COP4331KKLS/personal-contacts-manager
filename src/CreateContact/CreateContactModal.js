@@ -53,14 +53,14 @@ class CreateContactModal extends Component
             'authorization': this.props.uid,
             'Content-Type': 'application/json'
          },
-         body: {
+         body: JSON.stringify({
             'firstName': this.state.firstName,
             'lastName': this.state.lastName,
             'company': this.state.company,
             'phoneNumber': this.state.phoneNumber,
             'email': this.state.email,
             'address': this.state.address
-         }
+         })
 
       })
       .then(response => response.json())
