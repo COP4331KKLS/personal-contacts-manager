@@ -311,37 +311,31 @@ handleSearchInputChange = (evt) => {
  }
 
    editContact = (el) =>{
-  const First_Name = el.target.getAttribute('fName');
-  const Last_Name = el.target.getAttribute('lName');
-  const Company = el.target.getAttribute('company');
-  const Phone = el.target.getAttribute('phone');
-  const Email = el.target.getAttribute('email');
-  const Address =  el.target.getAttribute('address');
-  console.log(First_Name);
-  console.log(Last_Name);
-  console.log(Company);
-  console.log(Phone);
-  console.log(Email);
-  console.log(Address);
-  // this.getFirstName();
-  console.log("Edit Contact");
-  // modal.firstname.value =
-  // document.getElementById("EditContactss").getElementById("first-name-input");
-  // this.editContact.getElementById("first-name-input").value = First_Name;
-  // document.getElementById("first-name-edit").value=First_Name;
-  console.log(el.target.value);
-  this.setState({editPreFillFirstName: First_Name});
-  this.setState({editPreFillLastName: Last_Name});
-  this.setState({editPreFillCompany : Company});
-  this.setState({editPreFillPhone: Phone});
-  this.setState({editPreFillEmail: Email});
-  this.setState({editPreFillAddress: Address});
-  this.setState({editFirstName: First_Name});
-  this.setState({editLastName: Last_Name});
-  this.setState({editCompany : Company});
-  this.setState({editPhone: Phone});
-  this.setState({editEmail: Email});
-  this.setState({editAddress: Address});
+     var indexEdit = -1;
+     var newArray = this.state.contacts.slice();
+     //Send JSON of form for update
+     for(var i=0; i<newArray.length; i++)
+     {
+       if(String(newArray[i].cid)===String(this.state.editPreFillContactID))
+       {
+         indexEdit = i;
+         break;
+       }
+     }
+
+  this.setState({editPreFillFirstName: newArray[indexEdit].firstName});
+  this.setState({editPreFillLastName: newArray[indexEdit].lastName});
+  this.setState({editPreFillCompany : newArray[indexEdit].company});
+  this.setState({editPreFillPhone: newArray[indexEdit].phoneNumber});
+  this.setState({editPreFillEmail: newArray[indexEdit].email});
+  this.setState({editPreFillAddress: newArray[indexEdit].address});
+
+  this.setState({editFirstName: newArray[indexEdit].firstName});
+  this.setState({editLastName: newArray[indexEdit].lastName});
+  this.setState({editCompany : newArray[indexEdit].company});
+  this.setState({editPhone: newArray[indexEdit].phoneNumber});
+  this.setState({editEmail: newArray[indexEdit].email});
+  this.setState({editAddress: newArray[indexEdit].address});
   this.setState({editPreFillContactID: el.target.value});
   this.toggleEditModal();
 }
@@ -354,7 +348,7 @@ handleSearchInputChange = (evt) => {
      // console.log(this.state.contacts.length);
      for(var i=0; i<newArray.length; i++)
      {
-       if(newArray[i].cid===e.target.value)
+       if(String(newArray[i].cid)===String(e.target.value))
        {
          indexDelete = i;
          break;
@@ -461,15 +455,14 @@ handleSearchInputChange = (evt) => {
      var indexEdit = -1;
      var newArray = this.state.contacts.slice();
      //Send JSON of form for update
-     // for(var i=0; i<newArray.length; i++)
-     // {
-     //   if(newArray[i].cid===this.state.editPreFillContactID)
-     //   {
-     //     indexEdit = i;
-     //     break;
-     //   }
-     // }
-     indexEdit=e.target.value;
+     for(var i=0; i<newArray.length; i++)
+     {
+       if(String(newArray[i].cid)===String(this.state.editPreFillContactID))
+       {
+         indexEdit = i;
+         break;
+       }
+     }
      //
      // console.log("SUBMIT EDIT CONTACT");
      // console.log(this.state.editPreFillFirstName);
@@ -488,9 +481,7 @@ handleSearchInputChange = (evt) => {
        address: this.state.editPreFillAddress,
        cid: this.state.editPreFillContactID
      };
-     this.setState({contacts : newArray});
-     // this.setState({showContactOpen: false});
-     this.toggleEditModal();
+
 
 
      //JSON EDIT REQUEST
@@ -499,26 +490,32 @@ handleSearchInputChange = (evt) => {
      let requestUrl = "https://personal-contacts-manager.herokuapp.com/contacts/editContact";
 
      this.setState({
-        error: '',
-        authorization: ''
+        error: ''
      });
 
      fetch(requestUrl,
-     {
-        method: 'POST',
-        headers: {
-           'authorization': this.props.uid
-        },
-        body: {
-          "firstName": this.state.editFirstName,
-          "lastName" : newArray[indexEdit].lastName,
-          "company" : newArray[indexEdit].company,
-          "phoneNumber" : newArray[indexEdit].phoneNumber,
-          "email": newArray[indexEdit].email,
-          "address": newArray[indexEdit].address
-        }
+       {
+          method: 'POST',
+          headers: {
+             'authorization': this.props.uid,
+             'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            firstName: this.state.editFirstName,
+            lastName : this.state.editLastName,
+            company : this.state.editCompany,
+            phoneNumber : this.state.editPhoneNumber,
+            email: this.state.editEmail,
+            address: this.state.editAddress,
+            editFirstName: this.state.editPreFillFirstName,
+            editLastName : this.state.editPreFillLastName,
+            editCompany : this.state.editPreFillCompany,
+            editPhoneNumber : this.state.editPreFillPhoneNumber,
+            editEmail: this.state.editPreFillEmail,
+            editAddress: this.state.editPreFillAddress
+          })
 
-     })
+       })
      .then(response => response.json())
      .then(responseData =>
      {
@@ -527,16 +524,17 @@ handleSearchInputChange = (evt) => {
            console.log(responseData.error);
            this.setState({
               error: responseData.error,
-              authorization: ''
            });
            console.log(responseData.error);
            return;
         }
+        else
+{
 
         this.setState({
            authorization: responseData.message
         });
-
+}
      })
      .catch( error =>
      {
@@ -552,6 +550,10 @@ handleSearchInputChange = (evt) => {
      alert("Error Editing Contact");
      // event.preventDefault();
    }
+
+   this.setState({contacts : newArray});
+   // this.setState({showContactOpen: false});
+   this.toggleEditModal();
    }
 
    renderTableHeader() {
