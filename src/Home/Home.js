@@ -95,7 +95,7 @@ class Home extends Component
                          phoneNumber: '808-990-5604',
                          email: 'KyleRits@Knights.ucf.edu',
                          address: '3721 Pyrite Drive',
-                         cid: '1'
+                         cid: '0'
                      },
                      {
                        uid: '',
@@ -105,7 +105,7 @@ class Home extends Component
                        phoneNumber: '808-990-5604',
                        email: 'KyleRits@Knights.ucf.edu',
                        address: '3721 Pyrite Drive',
-                       cid: '2'
+                       cid: '1'
                      },
                      {
                        uid: '',
@@ -115,7 +115,7 @@ class Home extends Component
                        phoneNumber: '808-990-5604',
                        email: 'KyleRits@Knights.ucf.edu',
                        address: '3721 Pyrite Drive',
-                       cid: '3'
+                       cid: '2'
                      },{
                          uid: '',
                          firstName: 'Kyle',
@@ -124,7 +124,7 @@ class Home extends Component
                          phoneNumber: '808-990-5604',
                          email: 'KyleRits@Knights.ucf.edu',
                          address: '3721 Pyrite Drive',
-                         cid: '1'
+                         cid: '3'
                      },
                      {
                        uid: '',
@@ -134,75 +134,7 @@ class Home extends Component
                        phoneNumber: '808-990-5604',
                        email: 'KyleRits@Knights.ucf.edu',
                        address: '3721 Pyrite Drive',
-                       cid: '2'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'Stefan',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '3'
-                     },{
-                         uid: '',
-                         firstName: 'Kyle',
-                         lastName: 'Rits',
-                         company: 'Blah',
-                         phoneNumber: '808-990-5604',
-                         email: 'KyleRits@Knights.ucf.edu',
-                         address: '3721 Pyrite Drive',
-                         cid: '1'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'KEvin',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '2'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'Stefan',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '3'
-                     },{
-                         uid: '',
-                         firstName: 'Kyle',
-                         lastName: 'Rits',
-                         company: 'Blah',
-                         phoneNumber: '808-990-5604',
-                         email: 'KyleRits@Knights.ucf.edu',
-                         address: '3721 Pyrite Drive',
-                         cid: '1'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'KEvin',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '2'
-                     },
-                     {
-                       uid: '',
-                       firstName: 'Stefan',
-                       lastName: 'Rits',
-                       company: '',
-                       phoneNumber: '808-990-5604',
-                       email: 'KyleRits@Knights.ucf.edu',
-                       address: '3721 Pyrite Drive',
-                       cid: '3'
+                       cid: '4'
                      }
                  ],
         doRender: false,
@@ -420,18 +352,16 @@ handleSearchInputChange = (evt) => {
      var indexDelete = -1//this.getIndex(newArray);
      var newArray = this.state.contacts.slice();
      // console.log(this.state.contacts.length);
-     // for(var i=0; i<newArray.length; i++)
-     // {
-     //   if(newArray[i].cid===e.target.value)
-     //   {
-     //     indexDelete = i;
-     //     break;
-     //   }
-     // }
+     for(var i=0; i<newArray.length; i++)
+     {
+       if(newArray[i].cid===e.target.value)
+       {
+         indexDelete = i;
+         break;
+       }
+     }
+     console.log("Index Delete " + indexDelete);
 
-     indexDelete = e.target.value;
-     console.log(indexDelete);
-     if(indexDelete !== -1){
 
        let requestUrl = "https://personal-contacts-manager.herokuapp.com/contacts/deleteContact";
 
@@ -440,21 +370,22 @@ handleSearchInputChange = (evt) => {
        });
 
        fetch(requestUrl,
-       {
-          method: 'DELETE',
-          headers: {
-             'authorization': this.props.uid
-          },
-          body: JSON.stringify({
-            firstName: newArray[indexDelete].firstName,
-            lastName : newArray[indexDelete].lastName,
-            company : newArray[indexDelete].company,
-            phoneNumber : newArray[indexDelete].phoneNumber,
-            email: newArray[indexDelete].email,
-            address: newArray[indexDelete].address
-          })
+         {
+            method: 'DELETE',
+            headers: {
+               'authorization': this.props.uid,
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              firstName: newArray[indexDelete].firstName,
+              lastName : newArray[indexDelete].lastName,
+              company : newArray[indexDelete].company,
+              phoneNumber : newArray[indexDelete].phoneNumber,
+              email: newArray[indexDelete].email,
+              address: newArray[indexDelete].address
+            })
 
-       })
+         })
        .then(response => response.json())
        .then(responseData =>
        {
@@ -469,8 +400,7 @@ handleSearchInputChange = (evt) => {
           }
           else
 {
-                 newArray.splice(indexDelete,1);
-                 this.setState({contacts: newArray});
+
           this.setState({
              authorization: responseData.message
           });
@@ -484,12 +414,8 @@ handleSearchInputChange = (evt) => {
           });
        });
 
-
-
-     }
-     console.log(e.target.value);
-     console.log(e.target.index);
-     //Call delete request
+       newArray.splice(indexDelete,1);
+       this.setState({contacts: newArray});
    }
 
    submitSearch = (e) => {
@@ -501,9 +427,6 @@ handleSearchInputChange = (evt) => {
      this.setState({
         error: '',
      });
-
-     alert(this.state.uid)
-
      fetch(requestUrl,
      {
         method: 'GET',
@@ -514,13 +437,11 @@ handleSearchInputChange = (evt) => {
      .then(response => response.json())
      .then(responseData =>
      {
-
-        alert("Search results: " + responseData);
         console.log(responseData);
         // this.setState({
         //    tempContacts: responseData
         // });
-        this.contactConverter(responseData);
+        //this.contactConverter(responseData);
 
      })
      .catch( error =>
@@ -530,8 +451,6 @@ handleSearchInputChange = (evt) => {
            authorization: ''
         });
      });
-
-     alert("The search is for: " + requestUrl);
      this.setState({doRender: true});
    }
 //////////////////// END OF SEARCHSUBMIT ///////////////////////////////////////////////////////////////////////////////////////////
@@ -542,14 +461,15 @@ handleSearchInputChange = (evt) => {
      var indexEdit = -1;
      var newArray = this.state.contacts.slice();
      //Send JSON of form for update
-     for(var i=0; i<newArray.length; i++)
-     {
-       if(newArray[i].cid===this.state.editPreFillContactID)
-       {
-         indexEdit = i;
-         break;
-       }
-     }
+     // for(var i=0; i<newArray.length; i++)
+     // {
+     //   if(newArray[i].cid===this.state.editPreFillContactID)
+     //   {
+     //     indexEdit = i;
+     //     break;
+     //   }
+     // }
+     indexEdit=e.target.value;
      //
      // console.log("SUBMIT EDIT CONTACT");
      // console.log(this.state.editPreFillFirstName);
