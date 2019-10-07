@@ -296,7 +296,13 @@ handleSearchInputChange = (evt) => {
              email={email}
              address={address}
              onClick={this.editContact}>Edit</button></td>
-             <td class="tableButtons"><button value={cid} class="deleteButton button" onClick={this.deleteContact}>Delete</button></td>
+             <td class="tableButtons"><button value={cid} fName={First_Name}
+             lName={Last_Name}
+             company={company}
+             phone={phoneNumber}
+             email={email}
+             address={address}
+             class="deleteButton button" onClick={this.deleteContact}>Delete</button></td>
 
              <Modal isOpen = {this.state.editModal} toggle = {this.toggleEditModal}>
                <ModalHeader toggle = {this.toggleEditModal}>Edit Contact</ModalHeader>
@@ -413,39 +419,40 @@ handleSearchInputChange = (evt) => {
    deleteContact= (e) =>{
      var indexDelete = -1//this.getIndex(newArray);
      var newArray = this.state.contacts.slice();
-     console.log(this.state.contacts.length);
-     for(var i=0; i<newArray.length; i++)
-     {
-       if(newArray[i].cid===e.target.value)
-       {
-         indexDelete = i;
-         break;
-       }
-     }
+     // console.log(this.state.contacts.length);
+     // for(var i=0; i<newArray.length; i++)
+     // {
+     //   if(newArray[i].cid===e.target.value)
+     //   {
+     //     indexDelete = i;
+     //     break;
+     //   }
+     // }
+
+     indexDelete = e.target.value;
      console.log(indexDelete);
      if(indexDelete !== -1){
 
        let requestUrl = "https://personal-contacts-manager.herokuapp.com/contacts/deleteContact";
 
        this.setState({
-          error: '',
-          authorization: ''
+          error: ''
        });
 
        fetch(requestUrl,
        {
-          method: 'POST',
+          method: 'DELETE',
           headers: {
              'authorization': this.props.uid
           },
-          body: {
-            "firstName": newArray[indexDelete].firstName,
-            "lastName" : newArray[indexDelete].lastName,
-            "company" : newArray[indexDelete].company,
-            "phoneNumber" : newArray[indexDelete].phoneNumber,
-            "email": newArray[indexDelete].email,
-            "address": newArray[indexDelete].address
-          }
+          body: JSON.stringify({
+            firstName: newArray[indexDelete].firstName,
+            lastName : newArray[indexDelete].lastName,
+            company : newArray[indexDelete].company,
+            phoneNumber : newArray[indexDelete].phoneNumber,
+            email: newArray[indexDelete].email,
+            address: newArray[indexDelete].address
+          })
 
        })
        .then(response => response.json())
@@ -456,16 +463,18 @@ handleSearchInputChange = (evt) => {
              console.log(responseData.error);
              this.setState({
                 error: responseData.error,
-                authorization: ''
              });
              console.log(responseData.error);
              return;
           }
-
+          else
+{
+                 newArray.splice(indexDelete,1);
+                 this.setState({contacts: newArray});
           this.setState({
              authorization: responseData.message
           });
-
+}
        })
        .catch( error =>
        {
@@ -477,17 +486,10 @@ handleSearchInputChange = (evt) => {
 
 
 
-       newArray.splice(indexDelete,1);
-       this.setState({contacts: newArray});
      }
      console.log(e.target.value);
      console.log(e.target.index);
      //Call delete request
-
-
-
-
-
    }
 
    submitSearch = (e) => {
