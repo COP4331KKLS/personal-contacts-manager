@@ -514,6 +514,7 @@ handleSearchInputChange = (evt) => {
      {
 
         alert("Search results: " + responseData);
+        console.log(responseData);
         // this.setState({
         //    tempContacts: responseData
         // });
