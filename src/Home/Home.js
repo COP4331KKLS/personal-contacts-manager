@@ -178,13 +178,7 @@ handleSearchInputChange = (evt) => {
              email={email}
              address={address}
              onClick={this.editContact}>Edit</button></td>
-             <td class="tableButtons"><button value={cid} fName={First_Name}
-             lName={Last_Name}
-             company={company}
-             phone={phoneNumber}
-             email={email}
-             address={address}
-             class="deleteButton button" onClick={this.deleteContact}>Delete</button></td>
+             <td class="tableButtons"><button value={cid} fName={First_Name} class="deleteButton button" onClick={this.deleteContact}>Delete</button></td>
 
              <Modal isOpen = {this.state.editModal} toggle = {this.toggleEditModal}>
                <ModalHeader toggle = {this.toggleEditModal}>Edit Contact</ModalHeader>
@@ -375,7 +369,7 @@ handleSearchInputChange = (evt) => {
      //Send JSON of form for update
      for(var i=0; i<newArray.length; i++)
      {
-       if(String(newArray[i].cid)===String(this.state.editPreFillContactID))
+       if(String(newArray[i].cid)===String(el.target.value))
        {
          indexEdit = i;
          break;
@@ -427,7 +421,7 @@ handleSearchInputChange = (evt) => {
        firstName: this.state.editPreFillFirstName,
        lastName : this.state.editPreFillLastName,
        company : this.state.editPreFillCompany,
-       phoneNumber : this.state.editPreFillPhoneNumber,
+       phoneNumber : this.state.editPreFillPhone,
        email: this.state.editPreFillEmail,
        address: this.state.editPreFillAddress,
        cid: this.state.editPreFillContactID
@@ -513,7 +507,7 @@ handleSearchInputChange = (evt) => {
       header.push("")
       header[6] = ""
       return header.map((key, index) => {
-         return <th className="tableHeader" key={index}>{key.toUpperCase()}</th>
+         return <th classNamef="tableHeader" key={index}>{key.toUpperCase()}</th>
       })
     }
 
