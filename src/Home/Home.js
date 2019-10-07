@@ -86,6 +86,7 @@ class Home extends Component
 
      },
      tempContacts: [],
+<<<<<<< HEAD
         contacts: [
                      {
                          uid: '',
@@ -205,6 +206,9 @@ class Home extends Component
                        cid: '3'
                      }
                  ],
+=======
+        contacts: [],
+>>>>>>> e9736818b31c14903bf5d0bff39979e2eaac8141
         doRender: false,
         editPreFillFirstName: "new",
         editPreFillLastName: "",
@@ -216,7 +220,7 @@ class Home extends Component
         editFirstName: "",
         editLastName: "",
         editCompany : "",
-        editPhone: "",
+        editPhoneNumber: "",
         editEmail: "",
         editAddress: "",
         editContactID: ""
@@ -296,7 +300,11 @@ handleSearchInputChange = (evt) => {
              email={email}
              address={address}
              onClick={this.editContact}>Edit</button></td>
+<<<<<<< HEAD
              <td class="tableButtons"><button value={cid} class="deleteButton button" onClick={this.deleteContact}>Delete</button></td>
+=======
+             <td class="tableButtons"><button value={cid} fName={First_Name} class="deleteButton button" onClick={this.deleteContact}>Delete</button></td>
+>>>>>>> e9736818b31c14903bf5d0bff39979e2eaac8141
 
              <Modal isOpen = {this.state.editModal} toggle = {this.toggleEditModal}>
                <ModalHeader toggle = {this.toggleEditModal}>Edit Contact</ModalHeader>
@@ -507,8 +515,7 @@ handleSearchInputChange = (evt) => {
      .catch( error =>
      {
         this.setState({
-           error: `Internal server error. ${error}`,
-           authorization: ''
+           error: `Internal server error. ${error}`
         });
      });
 
@@ -517,6 +524,43 @@ handleSearchInputChange = (evt) => {
    }
 //////////////////// END OF SEARCHSUBMIT ///////////////////////////////////////////////////////////////////////////////////////////
 
+<<<<<<< HEAD
+=======
+
+
+   editContact = (el) =>{
+     var indexEdit = -1;
+     var newArray = this.state.contacts.slice();
+     //Send JSON of form for update
+     for(var i=0; i<newArray.length; i++)
+     {
+       if(String(newArray[i].cid)===String(el.target.value))
+       {
+         indexEdit = i;
+         break;
+       }
+     }
+
+  this.setState({editPreFillFirstName: newArray[indexEdit].firstName});
+  this.setState({editPreFillLastName: newArray[indexEdit].lastName});
+  this.setState({editPreFillCompany : newArray[indexEdit].company});
+  this.setState({editPreFillPhoneNumber: newArray[indexEdit].phoneNumber});
+  this.setState({editPreFillEmail: newArray[indexEdit].email});
+  this.setState({editPreFillAddress: newArray[indexEdit].address});
+
+  this.setState({editFirstName: newArray[indexEdit].firstName});
+  this.setState({editLastName: newArray[indexEdit].lastName});
+  this.setState({editCompany : newArray[indexEdit].company});
+  this.setState({editPhoneNumber: newArray[indexEdit].phoneNumber});
+  this.setState({editEmail: newArray[indexEdit].email});
+  this.setState({editAddress: newArray[indexEdit].address});
+  this.setState({editPreFillContactID: el.target.value});
+  this.toggleEditModal();
+}
+
+
+
+>>>>>>> e9736818b31c14903bf5d0bff39979e2eaac8141
    submitEditContact= (e) =>{
      // alert(`${this.state.editPreFillFirstName}`);
      var indexEdit = -1;
@@ -615,7 +659,6 @@ handleSearchInputChange = (evt) => {
 
 
    } else {
-     alert("Error Editing Contact");
      // event.preventDefault();
    }
 
@@ -636,11 +679,11 @@ handleSearchInputChange = (evt) => {
       header.push("")
       header[6] = ""
       return header.map((key, index) => {
-         return <th class="tableHeader" key={index}>{key.toUpperCase()}</th>
+         return <th classNamef="tableHeader" key={index}>{key.toUpperCase()}</th>
       })
     }
 
-    return <h1 class="EmptyResults">These aren't the droids you're looking for</h1>
+    return <h1 className="EmptyResults">These aren't the droids you're looking for</h1>
    }
 
    render()

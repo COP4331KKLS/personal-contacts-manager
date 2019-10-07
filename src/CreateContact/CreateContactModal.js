@@ -43,8 +43,6 @@ class CreateContactModal extends Component
    handleCreateContact = () =>
    {
       let requestUrl = SERVER_URL;
-      alert('Authorizaiton    ' + this.state.authorization + '   Props   ' + this.props.uid);
-
       this.setState({
          error: '',
          authorization: ''

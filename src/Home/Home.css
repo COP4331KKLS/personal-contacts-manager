@@ -5,10 +5,15 @@
 
 *{
   font-family: starwars;
+  letter-spacing: 0.1em;
 }
 
 .NavBarSettings{
   /* justify-content: space-evenly; */
+}
+
+.EmptyResults{
+  letter-spacing: 0.1em;
 }
 
 .displayResults{
