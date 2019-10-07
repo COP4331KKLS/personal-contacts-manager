@@ -310,37 +310,6 @@ handleSearchInputChange = (evt) => {
     })
  }
 
-   editContact = (el) =>{
-     var indexEdit = -1;
-     var newArray = this.state.contacts.slice();
-     //Send JSON of form for update
-     for(var i=0; i<newArray.length; i++)
-     {
-       if(String(newArray[i].cid)===String(this.state.editPreFillContactID))
-       {
-         indexEdit = i;
-         break;
-       }
-     }
-
-  this.setState({editPreFillFirstName: newArray[indexEdit].firstName});
-  this.setState({editPreFillLastName: newArray[indexEdit].lastName});
-  this.setState({editPreFillCompany : newArray[indexEdit].company});
-  this.setState({editPreFillPhone: newArray[indexEdit].phoneNumber});
-  this.setState({editPreFillEmail: newArray[indexEdit].email});
-  this.setState({editPreFillAddress: newArray[indexEdit].address});
-
-  this.setState({editFirstName: newArray[indexEdit].firstName});
-  this.setState({editLastName: newArray[indexEdit].lastName});
-  this.setState({editCompany : newArray[indexEdit].company});
-  this.setState({editPhone: newArray[indexEdit].phoneNumber});
-  this.setState({editEmail: newArray[indexEdit].email});
-  this.setState({editAddress: newArray[indexEdit].address});
-  this.setState({editPreFillContactID: el.target.value});
-  this.toggleEditModal();
-}
-
-
 
    deleteContact= (e) =>{
      var indexDelete = -1//this.getIndex(newArray);
@@ -448,6 +417,39 @@ handleSearchInputChange = (evt) => {
      this.setState({doRender: true});
    }
 //////////////////// END OF SEARCHSUBMIT ///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+   editContact = (el) =>{
+     var indexEdit = -1;
+     var newArray = this.state.contacts.slice();
+     //Send JSON of form for update
+     for(var i=0; i<newArray.length; i++)
+     {
+       if(String(newArray[i].cid)===String(this.state.editPreFillContactID))
+       {
+         indexEdit = i;
+         break;
+       }
+     }
+
+  this.setState({editPreFillFirstName: newArray[indexEdit].firstName});
+  this.setState({editPreFillLastName: newArray[indexEdit].lastName});
+  this.setState({editPreFillCompany : newArray[indexEdit].company});
+  this.setState({editPreFillPhone: newArray[indexEdit].phoneNumber});
+  this.setState({editPreFillEmail: newArray[indexEdit].email});
+  this.setState({editPreFillAddress: newArray[indexEdit].address});
+
+  this.setState({editFirstName: newArray[indexEdit].firstName});
+  this.setState({editLastName: newArray[indexEdit].lastName});
+  this.setState({editCompany : newArray[indexEdit].company});
+  this.setState({editPhone: newArray[indexEdit].phoneNumber});
+  this.setState({editEmail: newArray[indexEdit].email});
+  this.setState({editAddress: newArray[indexEdit].address});
+  this.setState({editPreFillContactID: el.target.value});
+  this.toggleEditModal();
+}
+
 
 
    submitEditContact= (e) =>{
