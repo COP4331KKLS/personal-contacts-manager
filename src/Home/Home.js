@@ -513,11 +513,11 @@ handleSearchInputChange = (evt) => {
       header.push("")
       header[6] = ""
       return header.map((key, index) => {
-         return <th class="tableHeader" key={index}>{key.toUpperCase()}</th>
+         return <th className="tableHeader" key={index}>{key.toUpperCase()}</th>
       })
     }
 
-    return <h1 class="EmptyResults">These aren't the droids you're looking for</h1>
+    return <h1 className="EmptyResults">These aren't the droids you're looking for</h1>
    }
 
    render()

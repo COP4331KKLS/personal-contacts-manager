@@ -12,6 +12,10 @@
   /* justify-content: space-evenly; */
 }
 
+.EmptyResults{
+  letter-spacing: 0.1em;
+}
+
 .displayResults{
   color: silver;
   background-color: blue;
