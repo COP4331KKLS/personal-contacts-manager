@@ -50,7 +50,8 @@ class CreateContactModal extends Component
       {
          method: 'POST',
          headers: {
-            'authorization': this.props.uid
+            'authorization': this.props.uid,
+            'Content-Type': 'application/json'
          },
          body: {
             'firstName': this.state.firstName,
